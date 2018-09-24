@@ -14,11 +14,13 @@
 
 # [START async-bot]
 
+# understand the logic in this python file
 import logging
 from apiclient.discovery import build, build_from_document
 from flask import Flask, render_template, request, json, make_response
 from httplib2 import Http
 from oauth2client.service_account import ServiceAccountCredentials
+
 
 app = Flask(__name__)
 
