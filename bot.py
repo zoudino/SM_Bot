@@ -15,14 +15,16 @@
 # [START async-bot]
 
 # understand the logic in this python file
-import logging
-from apiclient.discovery import build, build_from_document
-from flask import Flask, render_template, request, json, make_response
-from httplib2 import Http
-from oauth2client.service_account import ServiceAccountCredentials
+import logging # This can help to implement a flexible event logging system for application and libraries.
+from apiclient.discovery import build, build_from_documentw # using google api discovery to use the hangout api
+from flask import Flask, render_template, request, json, make_response # flask is a web framework for developing web application
+from httplib2 import Http # supporting access to the internet.
+from oauth2client.service_account import ServiceAccountCredentials # the GCP service account authentication
 
-
-app = Flask(__name__)
+"""
+   The whole logic of async bot, in my current understanding, is from client - hangout - flask 
+"""
+app = Flask(__name__) # Define web app. This is a required step for using web app.
 
 @app.route('/', methods=['POST'])
 def home_post():
@@ -31,22 +33,22 @@ def home_post():
     requests.
     """
 
-    event_data = request.get_json()
+    event_data = request.get_json() # the google hangout api calls the flask app. Flask will capture a json file sending from google app
 
-    resp = None
+    resp = None # variable for response
 
     # If the bot is removed from the space, it doesn't post a message
     # to the space. Instead, log a message showing that the bot was removed.
     if event_data['type'] == 'REMOVED_FROM_SPACE':
         logging.info('Bot removed from  %s' % event_data['space']['name'])
         return 'OK'
-
     else:
         resp = format_response(event_data)
 
     spaceName = event_data['space']['name']
 
-    send_async_response(resp, spaceName)
+    send_async_response(resp, spaceName) # calling send_async_response, processing the message, and sending back the message.
+
 
     # Need to return a response to avoid an error in the Flask app.
     return 'OK'
