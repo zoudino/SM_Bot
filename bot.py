@@ -16,7 +16,7 @@
 
 # understand the logic in this python file
 import logging # This can help to implement a flexible event logging system for application and libraries.
-from apiclient.discovery import build, build_from_documentw # using google api discovery to use the hangout api
+from apiclient.discovery import build, build_from_document # using google api discovery to use the hangout api
 from flask import Flask, render_template, request, json, make_response # flask is a web framework for developing web application
 from httplib2 import Http # supporting access to the internet.
 from oauth2client.service_account import ServiceAccountCredentials # the GCP service account authentication
@@ -25,7 +25,6 @@ from oauth2client.service_account import ServiceAccountCredentials # the GCP ser
    The whole logic of async bot, in my current understanding, is from client - hangout - flask 
 """
 app = Flask(__name__) # Define web app. This is a required step for using web app.
-
 @app.route('/', methods=['POST'])
 def home_post():
     """Respond to POST requests to this endpoint.
@@ -43,7 +42,7 @@ def home_post():
         logging.info('Bot removed from  %s' % event_data['space']['name'])
         return 'OK'
     else:
-        resp = format_response(event_data)
+        resp = format_response(event_data) # This will define what kind of data should be return to the client side.
 
     spaceName = event_data['space']['name']
 
@@ -61,11 +60,13 @@ def send_async_response(response, spaceName):
       response: the response payload
       spaceName: The URL of the Hangouts Chat room
     """
-    scopes = ['https://www.googleapis.com/auth/chat.bot']
+    # connecting with the google hangout api
+    scopes = ['https://www.googleapis.com/auth/chat.bot']  # this part is to use Google oauth2.0 to access google APIs
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
         'service-acct.json', scopes)
     http_auth = credentials.authorize(Http())
 
+    # the below part is sending back the message through google hangout api.
     chat = build('chat', 'v1', http=http_auth)
     chat.spaces().messages().create(
         parent=spaceName,
@@ -106,7 +107,6 @@ def format_response(event):
         response['thread'] = threadId
 
     return response
-
 # [END async-bot]
 
 @app.route('/', methods=['GET'])
@@ -115,5 +115,6 @@ def home_get():
     This function responds to requests with a simple HTML landing page for this
     App Engine instance.
     """
-
     return render_template('home.html')
+
+
