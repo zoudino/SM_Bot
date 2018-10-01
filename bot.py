@@ -95,10 +95,8 @@ def send_async_response(response, space_name, thread_id):
     ##################################
 
     scopes = ['https://www.googleapis.com/auth/chat.bot']
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(
-        'service-acct.json', scopes)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name('service-acct.json', scopes)
     http_auth = credentials.authorize(Http())
-
     chat = build('chat', 'v1', http=http_auth)
     chat.spaces().messages().create(
         parent=space_name,
