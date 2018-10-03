@@ -132,7 +132,6 @@ def create_card_response(event_message, create_time): #changed
                     'imageStyle': 'IMAGE'
                 }
             }
-        """ In this part, I will define all the dialog flow in straightforward way. Then, I will add more logic into the system """
         elif word =='start':
             widgets.append({
                 'textParagraph' : {
