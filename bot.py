@@ -121,21 +121,22 @@ def create_card_response(event_message, create_time): #changed
     words = event_message.lower().split()
 
     # let's add some conversation into the bot
-    GREETING_KEYWORDS = ("hello", "hi","greetings","sup","what's up")
+    GREETING_KEYWORDS = ("hello", "hi","sup","what's up")
     GREETING_RESPONSES = ["'sup bro","hey","hi","hey you get my snap"]
 
-    def check_for_greeting(sentence):
-        """If any of the words in the user's input was a greeting, return a greeting response"""
-        for word in sentence.words:
-            if word.lower() in GREETING_KEYWORDS:
-                return random.choice(GREETING_RESPONSES)
+
+    # using dictionary to track the phases of the conversation.
+    tracker = {
+        "start":0,
+            "1":0,
+            "2":0,
+            "3":0,
+          "yes":0,
+           "no":0,
+       "cancel":0
+    }
 
     for word in words:
-      if word == '2':
-          message_time.append(create_time) # changed
-
-    for word in words:
-
         if word == 'header':
             header = {
                 'header': {
@@ -146,27 +147,26 @@ def create_card_response(event_message, create_time): #changed
                 }
             }
         elif word in GREETING_KEYWORDS:
-
             widgets.append({
                 'textParagraph': {
                     'text': random.choice(GREETING_RESPONSES)
                 }
             })
-
-
         elif word =='start':
             widgets.append({
                 'textParagraph' : {
                     'text':'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
                 }
              })
-        elif word == '2'and len(message_time)==1:
+        elif word == '2' and tracker['2'] == 0:
+            tracker['2'] +=1
             widgets.append({
                  'textParagraph' : {
                     'text':'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>4.Cancel<br>Please select one of these options'
                 }
             })
-        elif word == '2' and len(message_time)==2:
+        elif word == '2' and tracker['2'] == 1:
+            tracker['2'] += 1
             widgets.append({
                  'textParagraph': {
                     'text':' You have selected option 2, IP address. To cancel and make a new selection, type CANCEL. Otherwise, please enter the IP address of the CI you want to update.'
@@ -313,6 +313,13 @@ def create_card_response(event_message, create_time): #changed
                     }
                 }
             })
+        else:
+            widgets.append({
+                'textParagraph': {
+                    'text': "I don't understand it. Please type '@service manager bot start' to get started with the bot:) Otherwise, the bot will not work approriately."
+                }
+            })
+
 
 
 
