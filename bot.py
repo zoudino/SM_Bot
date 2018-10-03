@@ -199,8 +199,6 @@ def create_card_response(event_message, create_time): #changed
                     'text':'Nothing happen! Need More Discussion'
                }
            })
-
-        """   End """
         elif word == 'keyvalue':
             widgets.append({
                 'keyValue': {
