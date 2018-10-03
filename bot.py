@@ -132,7 +132,7 @@ def create_card_response(event_message, create_time): #changed
                     'imageStyle': 'IMAGE'
                 }
             }
-
+        """ In this part, I will define all the dialog flow in straightforward way. Then, I will add more logic into the system """
         elif word =='start':
             widgets.append({
                 'textParagraph' : {
@@ -151,12 +151,57 @@ def create_card_response(event_message, create_time): #changed
                     'text':' You have selected option 2, IP address. To cancel and make a new selection, type CANCEL. Otherwise, please enter the IP address of the CI you want to update.'
                 }
             })
+        elif word == '127.0.0.1':
+            widgets.append({
+                 'textParagraph': {
+                    'text':' You have entered 127.0.0.1. Is this the IP address you want to lookup? Plese incidate yes or no'
+                }
+            })
+        elif word == 'yes':
+            widgets.append({
+                 'textParagraph': {
+                    'text':'You IP address matched with the following configuration item <br>CID01234567890<br>G1nwwhatever991<br>127.0.0.1<br> Is this the configuration Item you want to update? Please type yes or no'
+                }
+            })
+        elif word == 'yes again':
+            widgets.append({
+                 'textParagraph': {
+                    'text':'What data do you want to update for this CI? Please select one of the following options:<br>a.Owner<br>b.Service(s)<br>c.Status<br>d.Compliance category(PCI1,PCI2,SOX,and/or SSAE)<br>e.Description'
+                }
+            })
+        elif word == 'a':
+            widgets.append({
+                 'textParagraph': {
+                    'text':'You have chosen to update the owner of this configuration item. Is that correct? Please enter yes or no'
+                }
+            })
+        elif word == 'yes again 2':
+            widgets.append({
+                 'textParagraph': {
+                    'text':'please enter the valid email address of the new owner you want to assign to this configuration item'
+                }
+            })
+        elif word == 'Darren.Kroll@global.com':
+            widgets.append({
+                 'textParagraph': {
+                    'text':'you entered Darren.Kroll@global.com. Is this the update you wish to request?'
+                }
+            })
+        elif word == 'yes again3':
+            widgets.append({
+                 'textParagraph': {
+                    'text':'Please stand by while I open you ticket. <br> You ticket number is RF9876543'
+                }
+            })
+
         elif word == 'cancel':
            widgets.append({
                  'textParagraph':{
                     'text':'Nothing happen! Need More Discussion'
                }
-           }) 
+           })
+
+        """   End """
         elif word == 'keyvalue':
             widgets.append({
                 'keyValue': {
