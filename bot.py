@@ -162,7 +162,7 @@ def create_card_response(event_message, create_time): #changed
                     'text':'You IP address matched with the following configuration item <br>CID01234567890<br>G1nwwhatever991<br>127.0.0.1<br> Is this the configuration Item you want to update? Please type yes or no'
                 }
             })
-        elif word == 'yes again':
+        elif word == 'yes1':
             widgets.append({
                  'textParagraph': {
                     'text':'What data do you want to update for this CI? Please select one of the following options:<br>a.Owner<br>b.Service(s)<br>c.Status<br>d.Compliance category(PCI1,PCI2,SOX,and/or SSAE)<br>e.Description'
@@ -174,19 +174,19 @@ def create_card_response(event_message, create_time): #changed
                     'text':'You have chosen to update the owner of this configuration item. Is that correct? Please enter yes or no'
                 }
             })
-        elif word == 'yes again 2':
+        elif word == 'yes2':
             widgets.append({
                  'textParagraph': {
-                    'text':'please enter the valid email address of the new owner you want to assign to this configuration item'
+                    'text':'Please enter the valid email address of the new owner you want to assign to this configuration item'
                 }
             })
-        elif word == 'Darren.Kroll@global.com':
+        elif word == 'darren.kroll@globalpay.com':
             widgets.append({
                  'textParagraph': {
-                    'text':'you entered Darren.Kroll@global.com. Is this the update you wish to request?'
+                    'text':'You entered Darren.Kroll@global.com. Is this the update you wish to request?'
                 }
             })
-        elif word == 'yes again3':
+        elif word == 'yes3':
             widgets.append({
                  'textParagraph': {
                     'text':'Please stand by while I open you ticket. <br> You ticket number is RF9876543'
