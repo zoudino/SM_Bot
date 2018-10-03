@@ -151,12 +151,12 @@ def create_card_response(event_message, create_time): #changed
                     'text':' You have selected option 2, IP address. To cancel and make a new selection, type CANCEL. Otherwise, please enter the IP address of the CI you want to update.'
                 }
             })
-        elif word == 'cancel':
+        elif word =='cancel':
            widgets.append({
                  'textParagraph':{
                     'text':'Nothing happen! Need More Discussion'
                }
-           }) 
+           })
         elif word == 'keyvalue':
             widgets.append({
                 'keyValue': {
