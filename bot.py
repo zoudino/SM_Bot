@@ -13,10 +13,12 @@
 # limitations under the License.
 
 import logging
+import random
 from apiclient.discovery import build, build_from_document
 from flask import Flask, render_template, request, json, make_response
 from httplib2 import Http
 from oauth2client.service_account import ServiceAccountCredentials
+
 
 app = Flask(__name__)
 
@@ -117,6 +119,17 @@ def create_card_response(event_message, create_time): #changed
     header = None
 
     words = event_message.lower().split()
+
+    # let's add some conversation into the bot
+    GREETING_KEYWORDS = ("hello", "hi","greetings","sup","what's up")
+    GREETING_RESPONSES = ["'sup bro","hey","hi","hey you get my snap"]
+
+    def check_for_greeting(sentence):
+        """If any of the words in the user's input was a greeting, return a greeting response"""
+        for word in sentence.words:
+            if word.lower() in GREETING_KEYWORDS:
+                return random.choice(GREETING_RESPONSES)
+
     for word in words:
       if word == '2':
           message_time.append(create_time) # changed
@@ -132,6 +145,15 @@ def create_card_response(event_message, create_time): #changed
                     'imageStyle': 'IMAGE'
                 }
             }
+        elif word in GREETING_KEYWORDS:
+
+            widgets.append({
+                'textParagraph': {
+                    'text': random.choice(GREETING_RESPONSES)
+                }
+            })
+
+
         elif word =='start':
             widgets.append({
                 'textParagraph' : {
@@ -208,7 +230,6 @@ def create_card_response(event_message, create_time): #changed
                     'icon': 'STAR'
                 }
             })
-
         elif word == 'interactivetextbutton':
             widgets.append({
                 'buttons': [
