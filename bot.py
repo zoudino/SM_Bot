@@ -156,13 +156,15 @@ def create_card_response(event_message, create_time): #changed
                 }
             })
         elif word =='start':
+            tracker['start'] +=1  # This means the user starts the whole process.
             widgets.append({
                 'textParagraph' : {
-                    'text':'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI' + str(len(words))
+                    'text':'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
                 }
              })
         elif word == '2' and tracker['2'] == 0:
             tracker['2'] +=1
+            tracker['cancel'] +=1
             widgets.append({
                  'textParagraph' : {
                     'text':'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>4.Cancel<br>Please select one of these options'
@@ -170,6 +172,7 @@ def create_card_response(event_message, create_time): #changed
             })
         elif word == '2' and tracker['2'] == 1:
             tracker['2'] += 1
+            tracker['cancel'] +=1
             widgets.append({
                  'textParagraph': {
                     'text':' You have selected option 2, IP address. To cancel and make a new selection, type CANCEL. Otherwise, please enter the IP address of the CI you want to update.'
@@ -180,7 +183,8 @@ def create_card_response(event_message, create_time): #changed
                  'textParagraph': {
                     'text':' You have entered 127.0.0.1. Is this the IP address you want to lookup? Plese incidate yes or no'
                 }
-            })
+            }) #for this part, we need to connect with the backend and check the progress
+
         elif word == 'yes':
             widgets.append({
                  'textParagraph': {
@@ -217,12 +221,29 @@ def create_card_response(event_message, create_time): #changed
                     'text':'Please stand by while I open you ticket. <br> You ticket number is RF9876543'
                 }
             })
-        elif word == 'cancel':
-           widgets.append({
-                 'textParagraph':{
-                    'text':'Nothing happen! Need More Discussion'
-               }
-           })
+        elif word == 'cancel': # the number will used to track the stage of the conversation
+            if tracker['1'] != 0:
+                widgets.append({
+                    'textParagraph': {
+                        'text': send_cancel_message(tracker['1'], tracker['cancel'])
+                    }
+                })
+                tracker['cancel'] -=1
+            elif tracker['2'] != 0:
+                widgets.append({
+                    'textParagraph': {
+                        'text': send_cancel_message(tracker['2'], tracker['cancel'])
+                    }
+                })
+                tracker['cancel'] -=1
+            elif tracker['3'] != 0:
+                widgets.append({
+                    'textParagraph': {
+                        'text': send_cancel_message(tracker['3'], tracker['cancel'])
+                    }
+                })
+                tracker['cancel'] -=1
+
         elif word == 'keyvalue':
             widgets.append({
                 'keyValue': {
@@ -314,7 +335,7 @@ def create_card_response(event_message, create_time): #changed
         else:
             widgets.append({
                 'textParagraph': {
-                    'text': "I don't understand it. Please type '@service manager bot start' to get started with the bot:) Otherwise, the bot will not work approriately."
+                    'text': "Sorry, I don't think I got that. Type 'start' to get started:)"
                 }
             })
 
@@ -334,6 +355,19 @@ def create_card_response(event_message, create_time): #changed
     response['cards'] = cards
 
     return response
+
+#c_stage means the stage of the cancel
+#c_message means the message that we will send back
+#we need more information to check the coordinates
+def send_cancel_message(num, c_stage):
+    if num != 0 and c_stage == 1:
+        c_message = 'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
+        return c_message
+    elif num !=0 and c_stage == 2:
+        c_message = 'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>4.Cancel<br>Please select one of these options'
+        
+
+
 
 def respond_to_interactive_card_click(action_name, custom_params):
     """Creates a response for when the user clicks on an interactive card.

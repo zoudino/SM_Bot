@@ -20,12 +20,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="4511" />
+          <entry key="py" value="6333" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="4511" />
+          <entry key="Python" value="6333" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open" />
@@ -38,22 +38,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="139" column="28" lean-forward="true" selection-start-line="139" selection-start-column="28" selection-end-line="139" selection-end-column="28" />
+            <state relative-caret-position="504">
+              <caret line="186" column="12" lean-forward="true" selection-start-line="186" selection-start-column="12" selection-end-line="186" selection-end-column="12" />
               <folding>
                 <element signature="e#576#590#0" expanded="true" />
                 <element signature="e#5190#5533#0" />
                 <element signature="e#5466#5674#0" />
-                <element signature="e#5763#6114#0" />
-                <element signature="e#6204#6477#0" />
-                <element signature="e#6524#6735#0" />
                 <element signature="e#6776#7079#0" />
                 <element signature="e#7121#7432#0" />
                 <element signature="e#7471#7689#0" />
                 <element signature="e#7731#7945#0" />
                 <element signature="e#8009#8200#0" />
                 <element signature="e#8242#8433#0" />
-                <element signature="e#8477#8625#0" />
                 <element signature="e#8671#8951#0" />
                 <element signature="e#9010#9729#0" />
                 <element signature="e#9790#10503#0" />
@@ -63,6 +59,8 @@
                 <element signature="e#8503#8910#0" />
                 <element signature="e#8525#8892#0" />
                 <element signature="e#8984#9287#0" />
+                <element signature="e#9805#11763#0" />
+                <marker date="1538660965000" expanded="true" signature="13982:14477" ph="..." />
               </folding>
             </state>
           </provider>
@@ -175,22 +173,18 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="139" column="28" lean-forward="true" selection-start-line="139" selection-start-column="28" selection-end-line="139" selection-end-column="28" />
+        <state relative-caret-position="504">
+          <caret line="186" column="12" lean-forward="true" selection-start-line="186" selection-start-column="12" selection-end-line="186" selection-end-column="12" />
           <folding>
             <element signature="e#576#590#0" expanded="true" />
             <element signature="e#5190#5533#0" />
             <element signature="e#5466#5674#0" />
-            <element signature="e#5763#6114#0" />
-            <element signature="e#6204#6477#0" />
-            <element signature="e#6524#6735#0" />
             <element signature="e#6776#7079#0" />
             <element signature="e#7121#7432#0" />
             <element signature="e#7471#7689#0" />
             <element signature="e#7731#7945#0" />
             <element signature="e#8009#8200#0" />
             <element signature="e#8242#8433#0" />
-            <element signature="e#8477#8625#0" />
             <element signature="e#8671#8951#0" />
             <element signature="e#9010#9729#0" />
             <element signature="e#9790#10503#0" />
@@ -200,6 +194,8 @@
             <element signature="e#8503#8910#0" />
             <element signature="e#8525#8892#0" />
             <element signature="e#8984#9287#0" />
+            <element signature="e#9805#11763#0" />
+            <marker date="1538660965000" expanded="true" signature="13982:14477" ph="..." />
           </folding>
         </state>
       </provider>
