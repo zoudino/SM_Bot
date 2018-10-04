@@ -20,12 +20,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="3777" />
+          <entry key="py" value="4401" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="3777" />
+          <entry key="Python" value="4401" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open" />
@@ -38,10 +38,31 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="158" column="17" lean-forward="true" selection-start-line="158" selection-start-column="17" selection-end-line="158" selection-end-column="17" />
+            <state relative-caret-position="537">
+              <caret line="159" column="35" lean-forward="true" selection-start-line="159" selection-start-column="35" selection-end-line="159" selection-end-column="35" />
               <folding>
                 <element signature="e#576#590#0" expanded="true" />
+                <element signature="e#5190#5533#0" />
+                <element signature="e#5466#5674#0" />
+                <element signature="e#5763#6114#0" />
+                <element signature="e#6204#6477#0" />
+                <element signature="e#6524#6735#0" />
+                <element signature="e#6776#7079#0" />
+                <element signature="e#7121#7432#0" />
+                <element signature="e#7471#7689#0" />
+                <element signature="e#7731#7945#0" />
+                <element signature="e#8009#8200#0" />
+                <element signature="e#8242#8433#0" />
+                <element signature="e#8477#8625#0" />
+                <element signature="e#8671#8951#0" />
+                <element signature="e#9010#9729#0" />
+                <element signature="e#9790#10503#0" />
+                <element signature="e#10552#11018#0" />
+                <element signature="e#11068#11534#0" />
+                <element signature="e#8474#8924#0" />
+                <element signature="e#8503#8910#0" />
+                <element signature="e#8525#8892#0" />
+                <element signature="e#8984#9287#0" />
               </folding>
             </state>
           </provider>
@@ -59,11 +80,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="1284" />
-    <option name="y" value="-198" />
-    <option name="width" value="1280" />
-    <option name="height" value="732" />
+    <option name="y" value="-203" />
+    <option name="width" value="1916" />
+    <option name="height" value="1012" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -113,7 +134,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1284" y="-203" width="1916" height="1012" extended-state="6" />
+    <frame x="1284" y="-203" width="1916" height="1012" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -154,10 +175,31 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="158" column="17" lean-forward="true" selection-start-line="158" selection-start-column="17" selection-end-line="158" selection-end-column="17" />
+        <state relative-caret-position="537">
+          <caret line="159" column="35" lean-forward="true" selection-start-line="159" selection-start-column="35" selection-end-line="159" selection-end-column="35" />
           <folding>
             <element signature="e#576#590#0" expanded="true" />
+            <element signature="e#5190#5533#0" />
+            <element signature="e#5466#5674#0" />
+            <element signature="e#5763#6114#0" />
+            <element signature="e#6204#6477#0" />
+            <element signature="e#6524#6735#0" />
+            <element signature="e#6776#7079#0" />
+            <element signature="e#7121#7432#0" />
+            <element signature="e#7471#7689#0" />
+            <element signature="e#7731#7945#0" />
+            <element signature="e#8009#8200#0" />
+            <element signature="e#8242#8433#0" />
+            <element signature="e#8477#8625#0" />
+            <element signature="e#8671#8951#0" />
+            <element signature="e#9010#9729#0" />
+            <element signature="e#9790#10503#0" />
+            <element signature="e#10552#11018#0" />
+            <element signature="e#11068#11534#0" />
+            <element signature="e#8474#8924#0" />
+            <element signature="e#8503#8910#0" />
+            <element signature="e#8525#8892#0" />
+            <element signature="e#8984#9287#0" />
           </folding>
         </state>
       </provider>

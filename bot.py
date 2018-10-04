@@ -117,6 +117,7 @@ def create_card_response(event_message, create_time): #changed
     cards = list()
     widgets = list()
     header = None
+    error_message = 0;
 
     words = event_message.lower().split()
 
@@ -126,6 +127,7 @@ def create_card_response(event_message, create_time): #changed
 
 
     # using dictionary to track the phases of the conversation.
+    # More explaination: this dictionary is simulated to coordinate. People always can find their specific location by coordinate
     tracker = {
         "start":0,
             "1":0,
@@ -135,6 +137,7 @@ def create_card_response(event_message, create_time): #changed
            "no":0,
        "cancel":0
     }
+    # when the cancel equals to  1. It means we are in phase 1. And use can have one opportunity to cancel back.
 
     for word in words:
         if word == 'header':
@@ -155,7 +158,7 @@ def create_card_response(event_message, create_time): #changed
         elif word =='start':
             widgets.append({
                 'textParagraph' : {
-                    'text':'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
+                    'text':'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI' + len(words)
                 }
              })
         elif word == '2' and tracker['2'] == 0:
@@ -214,7 +217,6 @@ def create_card_response(event_message, create_time): #changed
                     'text':'Please stand by while I open you ticket. <br> You ticket number is RF9876543'
                 }
             })
-
         elif word == 'cancel':
            widgets.append({
                  'textParagraph':{
@@ -249,7 +251,6 @@ def create_card_response(event_message, create_time): #changed
                     }
                 ]
             })
-
         elif word == 'interactiveimagebutton':
             widgets.append({
                 'buttons': [
@@ -269,7 +270,6 @@ def create_card_response(event_message, create_time): #changed
                     }
                 ]
             })
-
         elif word == 'textbutton':
             widgets.append({
                 'buttons': [
@@ -285,7 +285,6 @@ def create_card_response(event_message, create_time): #changed
                     }
                 ]
             })
-
         elif word == 'imagebutton':
             widgets.append({
                 'buttons': [
@@ -301,7 +300,6 @@ def create_card_response(event_message, create_time): #changed
                     }
                 ]
             })
-
         elif word == 'image':
             widgets.append({
                 'image': {
