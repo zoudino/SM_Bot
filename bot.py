@@ -120,7 +120,7 @@ def create_card_response(event_message, create_time): #changed
     error_message = 0;
 
     words = event_message.lower().split()
-
+    words = words[2:]
     # let's add some conversation into the bot
     GREETING_KEYWORDS = ("hello", "hi","sup","what's up")
     GREETING_RESPONSES = ["'sup bro","hey","hi","hey you get my snap"]
