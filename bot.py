@@ -335,10 +335,9 @@ def create_card_response(event_message, create_time): #changed
         elif word == 'debug':
             widgets.append({
                 'textParagraph': {
-                    'text': 'Debug - Current bot status: <br>' + str(tracker)
+                    'text': 'Debug - Current bot status: <br>' + str(tracker) + '<br> Current length of the message' + str(len(words))
                 }
             })
-
         else:
             widgets.append({
                 'textParagraph': {
