@@ -158,7 +158,7 @@ def create_card_response(event_message, create_time): #changed
         elif word =='start':
             widgets.append({
                 'textParagraph' : {
-                    'text':'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI' + len(words)
+                    'text':'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI' + str(len(words))
                 }
              })
         elif word == '2' and tracker['2'] == 0:
