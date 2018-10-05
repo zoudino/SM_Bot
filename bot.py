@@ -120,7 +120,7 @@ def create_card_response(event_message, create_time): #changed
     error_message = 0;
 
     words = event_message.lower().split()
-    words_test = words
+
     words = words[2:]
 
     # if the words has any
@@ -337,7 +337,7 @@ def create_card_response(event_message, create_time): #changed
         elif word == 'debug':
             widgets.append({
                 'textParagraph': {
-                    'text': 'Debug - Current bot status: <br>' + str(tracker) + '<br> Current length of the message is ' + str(len(words)) + '<br> Words test ' + words_test
+                    'text': 'Debug - Current bot status: <br>' + str(tracker) + '<br> Current length of the message is ' + str(len(words)) + '<br> Words test ' + event_message
                 }
             })
         else:
