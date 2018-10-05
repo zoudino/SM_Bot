@@ -170,7 +170,7 @@ def create_card_response(event_message, create_time): #changed
                     'text':'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
                 }
              })
-        elif word == 'start' and tracker['start'] = 1:
+        elif word == 'start' and tracker['start'] == 1:
             # The whole program should restart again. So, clear all the existing.
             tracker = {key:0 for key in tracker}
             widgets.append({
