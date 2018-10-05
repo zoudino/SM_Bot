@@ -121,7 +121,8 @@ def create_card_response(event_message, create_time): #changed
 
     words = event_message.lower().split()
 
-    words = words[2:]
+    # Event message = @"Service Manager bot"  debug
+    words = words[3:]
 
     # if the words has any
     # let's add some conversation into the bot
@@ -142,6 +143,7 @@ def create_card_response(event_message, create_time): #changed
     }
     # when the cancel equals to  1. It means we are in phase 1. And use can have one opportunity to cancel back.
 
+    # bug is why does the dictionary not working?
     for word in words:
         if word == 'header':
             header = {
