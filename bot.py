@@ -104,6 +104,17 @@ def send_async_response(response, space_name, thread_id):
         parent=space_name,
         body=response).execute()
 
+"""This is coodinate to track the stages of the conversation"""
+tracker = {
+        "start":0,
+            "1":0,
+            "2":0,
+            "3":0,
+          "yes":0,
+           "no":0,
+       "cancel":0
+    }
+
 message_time = [] # changed
 def create_card_response(event_message, create_time): #changed
     """Creates a card response based on the message sent in Hangouts Chat.
@@ -132,15 +143,7 @@ def create_card_response(event_message, create_time): #changed
 
     # using dictionary to track the phases of the conversation.
     # More explaination: this dictionary is simulated to coordinate. People always can find their specific location by coordinate
-    tracker = {
-        "start":0,
-            "1":0,
-            "2":0,
-            "3":0,
-          "yes":0,
-           "no":0,
-       "cancel":0
-    }
+
     # when the cancel equals to  1. It means we are in phase 1. And use can have one opportunity to cancel back.
 
     # bug is why does the dictionary not working?
