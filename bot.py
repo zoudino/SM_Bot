@@ -120,7 +120,10 @@ def create_card_response(event_message, create_time): #changed
     error_message = 0;
 
     words = event_message.lower().split()
+    words_test = words
     words = words[2:]
+
+    # if the words has any
     # let's add some conversation into the bot
     GREETING_KEYWORDS = ("hello", "hi","sup","what's up")
     GREETING_RESPONSES = ["'sup bro","hey","hi","hey you get my snap"]
@@ -184,7 +187,6 @@ def create_card_response(event_message, create_time): #changed
                     'text':' You have entered 127.0.0.1. Is this the IP address you want to lookup? Plese incidate yes or no'
                 }
             }) #for this part, we need to connect with the backend and check the progress
-
         elif word == 'yes':
             widgets.append({
                  'textParagraph': {
@@ -335,7 +337,7 @@ def create_card_response(event_message, create_time): #changed
         elif word == 'debug':
             widgets.append({
                 'textParagraph': {
-                    'text': 'Debug - Current bot status: <br>' + str(tracker) + '<br> Current length of the message' + str(len(words))
+                    'text': 'Debug - Current bot status: <br>' + str(tracker) + '<br> Current length of the message is ' + str(len(words)) + '<br> Words test ' + words_test
                 }
             })
         else:
