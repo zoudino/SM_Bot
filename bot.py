@@ -127,6 +127,10 @@ def create_card_response(event_message):
     header = None
     global tracker
 
+    "Variables that will be used in checking information of the SM"
+    ip_address = ''
+
+
     words = event_message.lower().split()
     # Event message = @"Service Manager bot"  debug
     words = words[3:]
@@ -150,7 +154,7 @@ def create_card_response(event_message):
                     'text': random.choice(GREETING_RESPONSES)
                 }
             })
-        elif word =='start':
+        elif word =='start' and tracker['start'] == 0:
             widgets.append({
                 'textParagraph' : {
                     'text':'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
