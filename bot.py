@@ -27,6 +27,17 @@ INTERACTIVE_IMAGE_BUTTON_ACTION = "doImageButtonAction"
 INTERACTIVE_BUTTON_PARAMETER_KEY = "param_key"
 BOT_HEADER = 'Card Bot Python'
 
+"""This is coodinate to track the progress of the conversation"""
+tracker = {
+        "start":0,
+            "1":0,
+            "2":0,
+            "3":0,
+          "yes":0,
+           "no":0,
+       "cancel":0
+    }
+
 @app.route('/', methods=['POST'])
 def home_post():
     """Respond to POST requests to this endpoint.
@@ -103,17 +114,6 @@ def send_async_response(response, space_name, thread_id):
         parent=space_name,
         body=response).execute()
 
-"""This is coodinate to track the progress of the conversation"""
-tracker = {
-        "start":0,
-            "1":0,
-            "2":0,
-            "3":0,
-          "yes":0,
-           "no":0,
-       "cancel":0
-    }
-
 def create_card_response(event_message):
     """Creates a card response based on the message sent in Hangouts Chat.
     See the reference for JSON keys and format for cards:
@@ -134,15 +134,6 @@ def create_card_response(event_message):
     # let's add some conversation into the bot. So, we can add some flexability into our chat.
     GREETING_KEYWORDS = ("hello", "hi","sup","what's up")
     GREETING_RESPONSES = ["'sup bro","hey","hi","hey you get my snap"]
-
-    tracker['start'] = 0
-    tracker['1'] = 0
-    tracker['2'] = 0
-    tracker['3'] = 0
-    tracker['yes'] = 0
-    tracker['cancel'] = 0
-    tracker['no'] = 0
-
     for word in words:
         if word == 'header':
             header = {
@@ -160,7 +151,6 @@ def create_card_response(event_message):
                 }
             })
         elif word =='start':
-            tracker['start']
             widgets.append({
                 'textParagraph' : {
                     'text':'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
