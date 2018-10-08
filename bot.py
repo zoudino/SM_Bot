@@ -137,7 +137,7 @@ def create_card_response(event_message):
     global tracker
     global ip_address
     global error_message
-    error_message = 0
+
 
     words = event_message.lower().split()
     # Event message = @"Service Manager bot"  debug
@@ -303,7 +303,7 @@ def create_card_response(event_message):
 
 
 
-    if event_message > 0:
+    if error_message > 0:
         widgets.append({
             'textParagraph': {
                 'text': "Sorry, I don't think I got that. Type 'start' to get started:)"
