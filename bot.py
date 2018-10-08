@@ -309,7 +309,7 @@ def create_card_response(event_message):
                 'text': "Sorry, I don't think I got that. Type 'start' to get started:)"
             }
         })
-        event_message = 0
+        error_message = 0
 
     if header != None:
         cards.append(header)
