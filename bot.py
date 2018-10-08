@@ -113,6 +113,9 @@ def send_async_response(response, space_name, thread_id):
         parent=space_name,
         body=response).execute()
 
+
+"Variables that will be used in checking information of the SM"
+ip_address = ''
 def create_card_response(event_message):
     """Creates a card response based on the message sent in Hangouts Chat.
     See the reference for JSON keys and format for cards:
@@ -126,9 +129,9 @@ def create_card_response(event_message):
     widgets = list()
     header = None
     global tracker
+    global ip_address
 
-    "Variables that will be used in checking information of the SM"
-    ip_address = ''
+
 
 
     words = event_message.lower().split()
