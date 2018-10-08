@@ -197,7 +197,7 @@ def create_card_response(event_message):
             ip_address = word
             widgets.append({
                  'textParagraph': {
-                    'text':' You have entered ' + word + '<br>Is this the IP address you want to lookup? Plese incidate yes or no'
+                    'text':' You have entered ' + ip_address + '<br>Is this the IP address you want to lookup? Plese incidate yes or no'
                 }
             })
             tracker['2'] += 1
@@ -287,7 +287,7 @@ def create_card_response(event_message):
         elif word == 'debug':
             widgets.append({
                 'textParagraph': {
-                    'text': 'Debug - Current bot status: <br>' + str(tracker) + '<br> Current length of the message is ' + str(len(words)) + '<br> Words test ' + event_message
+                    'text': 'Debug - Current bot status: <br>' + str(tracker) + '<br> Current length of the message is ' + str(len(words)) + '<br> Words test ' + event_message + '<br>IP address' + ip_address
                 }
             })
         else:
