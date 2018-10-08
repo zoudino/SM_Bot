@@ -50,7 +50,7 @@ def home_post():
             .format(event_data['user']['displayName'])) }
 
     elif event_data['type'] == 'MESSAGE':
-        resp = create_card_response(event_data['message']['text'],event_data['message']['createTime']) # changed
+        resp = create_card_response(event_data['message']['text']) # changed
   
     elif event_data['type'] == 'CARD_CLICKED':
         action_name = event_data['action']['actionMethodName']
@@ -114,7 +114,6 @@ tracker = {
        "cancel":0
     }
 
-message_time = [] # changed
 def create_card_response(event_message, create_time): #changed
     """Creates a card response based on the message sent in Hangouts Chat.
     See the reference for JSON keys and format for cards:
@@ -127,7 +126,6 @@ def create_card_response(event_message, create_time): #changed
     cards = list()
     widgets = list()
     header = None
-    error_message = 0;
 
     words = event_message.lower().split()
     # Event message = @"Service Manager bot"  debug
@@ -154,7 +152,7 @@ def create_card_response(event_message, create_time): #changed
                 }
             })
         elif word =='start':
-            tracker['start'] +=1  # This means the user starts the whole process.
+            tracker['start'] +=1
             widgets.append({
                 'textParagraph' : {
                     'text':'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
