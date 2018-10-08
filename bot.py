@@ -33,7 +33,6 @@ def home_post():
     All requests sent to this endpoint from Hangouts Chat are POST
     requests.
     """
-
     event_data = request.get_json()
     resp = None
     # If the bot is removed from the space, it doesn't post a message
@@ -104,7 +103,7 @@ def send_async_response(response, space_name, thread_id):
         parent=space_name,
         body=response).execute()
 
-"""This is coodinate to track the stages of the conversation"""
+"""This is coodinate to track the progress of the conversation"""
 tracker = {
         "start":0,
             "1":0,
@@ -131,29 +130,20 @@ def create_card_response(event_message, create_time): #changed
     error_message = 0;
 
     words = event_message.lower().split()
-
     # Event message = @"Service Manager bot"  debug
     words = words[3:]
 
-    # if the words has any
-    # let's add some conversation into the bot
+    # let's add some conversation into the bot. So, we can add some flexability into our chat.
     GREETING_KEYWORDS = ("hello", "hi","sup","what's up")
     GREETING_RESPONSES = ["'sup bro","hey","hi","hey you get my snap"]
 
-
-    # using dictionary to track the phases of the conversation.
-    # More explaination: this dictionary is simulated to coordinate. People always can find their specific location by coordinate
-
-    # when the cancel equals to  1. It means we are in phase 1. And use can have one opportunity to cancel back.
-
-    # bug is why does the dictionary not working?
     for word in words:
         if word == 'header':
             header = {
                 'header': {
                     'title': 'Service Manager Ticket Support',
                     'subtitle': 'This bot is designed to help you quickly upadte the information of a ticket',
-                    'imageUrl': 'https://goo.gl/5obRKj',
+                    'imageUrl': 'https://goo.gl/5obRKj', # This picture is not working and will be replaced soon.
                     'imageStyle': 'IMAGE'
                 }
             }
@@ -171,19 +161,25 @@ def create_card_response(event_message, create_time): #changed
                 }
              })
         elif word == 'start' and tracker['start'] == 1:
-            # The whole program should restart again. So, clear all the existing.
+            # The whole program should restart again. So, clear all the data.
             tracker = {key:0 for key in tracker}
             widgets.append({
                 'textParagraph': {
                     'text': 'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
                 }
             })
-        elif word == '2' and tracker['2'] == 0:
+        elif word == '1':  # The bot will tell him the option 1 is still in development progress.  Later for more improvement
+            widgets.append({
+                'textParagraph': {
+                    'text': 'Sorry, this feature is still in progress. Please type "cancel" for returning the previous window'
+                }
+            })
+        elif word == '2' and tracker['2'] == 0:  # if the user chose 2 for a start.
             tracker['2'] +=1
-            tracker['cancel'] +=1
+            tracker['cancel'] +=1  # the user will get the opportunity to add 1 in cancel.
             widgets.append({
                  'textParagraph' : {
-                    'text':'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>4.Cancel<br>Please select one of these options'
+                    'text':'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>Cancel<br>Please select one of these options'
                 }
             })
         elif word == '2' and tracker['2'] == 1:
@@ -194,46 +190,72 @@ def create_card_response(event_message, create_time): #changed
                     'text':' You have selected option 2, IP address. To cancel and make a new selection, type CANCEL. Otherwise, please enter the IP address of the CI you want to update.'
                 }
             })
-        elif word == '127.0.0.1':
+        elif tracker['2'] == 2 and tracker['cancel'] == 2: # check the data we have and then return the following answer.
+            tracker['2'] += 1
+            tracker['cancel'] += 1
+            ip_address = word
             widgets.append({
                  'textParagraph': {
-                    'text':' You have entered 127.0.0.1. Is this the IP address you want to lookup? Plese incidate yes or no'
+                    'text':' You have entered ' + word + '<br>Is this the IP address you want to lookup? Plese incidate yes or no'
                 }
             }) #for this part, we need to connect with the backend and check the progress
-        elif word == 'yes':
+        elif word == 'yes' and tracker['2'] == 3 and tracker['cancel'] == 3 and check_IP_address(ip_address) == True:
+            tracker['2'] += 1
+            tracker['cancel'] += 1
             widgets.append({
                  'textParagraph': {
                     'text':'You IP address matched with the following configuration item <br>CID01234567890<br>G1nwwhatever991<br>127.0.0.1<br> Is this the configuration Item you want to update? Please type yes or no'
                 }
             })
-        elif word == 'yes1':
+        elif word == 'yes' and tracker['2'] == 3 and tracker['cancel'] == 3 and check_IP_address(ip_address) == False:
+            widgets.append({
+                'textParagraph': {
+                    'text': 'Sorry, I did not find any matched IP address in the system. Or you entered an invalid IP address.'
+                }
+            })
+        elif word == 'yes' and tracker['2'] == 4 and tracker['cancel'] == 4: # the unique identifier will help to keep track of the progress of the conversation.
+            tracker['2'] += 1
+            tracker['cancel'] += 1
             widgets.append({
                  'textParagraph': {
                     'text':'What data do you want to update for this CI? Please select one of the following options:<br>a.Owner<br>b.Service(s)<br>c.Status<br>d.Compliance category(PCI1,PCI2,SOX,and/or SSAE)<br>e.Description'
                 }
             })
-        elif word == 'a':
+        elif word == 'a' and tracker['2'] == 5 and tracker['cancel'] == 5:
+            tracker['2'] += 1
+            tracker['cancel'] += 1
             widgets.append({
                  'textParagraph': {
                     'text':'You have chosen to update the owner of this configuration item. Is that correct? Please enter yes or no'
                 }
             })
-        elif word == 'yes2':
+        elif word == 'yes' and tracker['2'] == 6 and tracker['cancel'] == 6:
+            tracker['2'] += 1
+            tracker['cancel'] += 1
             widgets.append({
                  'textParagraph': {
                     'text':'Please enter the valid email address of the new owner you want to assign to this configuration item'
                 }
             })
-        elif word == 'darren.kroll@globalpay.com':
+        elif tracker['2'] == 7 and tracker['cancel'] == 7: # this is the stage for email address.
+            tracker['2'] += 1
+            tracker['cancel'] += 1
             widgets.append({
                  'textParagraph': {
-                    'text':'You entered Darren.Kroll@global.com. Is this the update you wish to request?'
+                    'text':'You entered' + 'Darren.Kroll@global.com' + '<br>Is this the update you wish to request?'
                 }
             })
-        elif word == 'yes3':
+        elif word == 'yes'and tracker['2'] == 8 and tracker['cancel'] == 8:
             widgets.append({
                  'textParagraph': {
-                    'text':'Please stand by while I open you ticket. <br> You ticket number is RF9876543'
+                    'text':'Please stand by while I open you ticket. <br> You ticket number is RF9876543. Type "finish" to end the conversation'
+                }
+            })
+        elif word == 'finish':
+            tracker = {key: 0 for key in tracker} # clear all the data in case the next user will be using the same result.
+            widgets.append({
+                'textParagraph': {
+                    'text': 'Feel free to start another task by type "start"'
                 }
             })
         elif word == 'cancel': # the number will used to track the stage of the conversation
@@ -258,6 +280,112 @@ def create_card_response(event_message, create_time): #changed
                     }
                 })
                 tracker['cancel'] -=1
+
+
+        elif word == 'debug':
+            widgets.append({
+                'textParagraph': {
+                    'text': 'Debug - Current bot status: <br>' + str(tracker) + '<br> Current length of the message is ' + str(len(words)) + '<br> Words test ' + event_message
+                }
+            })
+        else:
+            widgets.append({
+                'textParagraph': {
+                    'text': "Sorry, I don't think I got that. Type 'start' to get started:)"
+                }
+            })
+    if header != None:
+        cards.append(header)
+
+    cards.append({  'header': {
+                    'title': 'Service Manager Support',
+                    'subtitle': 'Connecting with SM faster than ever',
+                    'imageUrl': 'https://ibb.co/cAtewp',
+                    'imageStyle': 'IMAGE'
+                  },
+                    'sections': [{'widgets': widgets }]})
+    response['cards'] = cards
+
+    return response
+
+#c_stage means the stage of the cancel
+#c_message means the message that we will send back
+#we need more information to check the coordinates
+def send_cancel_message(num, c_stage):
+    if num != 0 and c_stage == 1:
+        c_message = 'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
+        return c_message
+    elif num !=0 and c_stage == 2:
+        c_message = 'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>4.Cancel<br>Please select one of these options'
+
+def check_IP_address(ip):
+    fake_data = ['127.0.0.1']
+    if ip == fake_data[0]:
+        return True
+    else:
+        return False
+
+def respond_to_interactive_card_click(action_name, custom_params):
+    """Creates a response for when the user clicks on an interactive card.
+    See the guide for creating interactive cards
+    https://developers.google.com/hangouts/chat/how-tos/cards-onclick
+    Args:
+        action_name: the name of the custom action defined in the original bot response
+        custom_params: the parameters defined in the original bot response
+    """
+    message = 'You clicked {}'.format(
+        'a text button' if action_name == INTERACTIVE_TEXT_BUTTON_ACTION
+            else 'an image button')
+
+    original_message = ""
+
+    if custom_params[0]['key'] == INTERACTIVE_BUTTON_PARAMETER_KEY:
+        original_message = custom_params[0]['value']
+    else:
+        original_message = '<i>Cannot determine original message</i>'
+
+    # If you want to respond to the same room but with a new message,
+    # change the following value to NEW_MESSAGE.
+    action_response = 'UPDATE_MESSAGE'
+
+    return {
+        'actionResponse': {
+            'type': action_response
+        },
+        'cards': [
+            {
+                'header': {
+                    'title': BOT_HEADER,
+                    'subtitle': 'Interactive card clicked',
+                    'imageUrl': 'https://goo.gl/5obRKj',
+                    'imageStyle': 'IMAGE'
+                }
+            },
+            {
+                'sections': [
+                    {
+                        'widgets': [
+                            {
+                                'textParagraph': {
+                                    'text': message
+                                }
+                            },
+                            {
+                                'keyValue': {
+                                    'topLabel': 'Original message',
+                                    'content': original_message
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+
+
+"""
+   Later will be deleted if we no longer use it. 
 
         elif word == 'keyvalue':
             widgets.append({
@@ -347,109 +475,11 @@ def create_card_response(event_message, create_time): #changed
                     }
                 }
             })
-        elif word == 'debug':
-            widgets.append({
-                'textParagraph': {
-                    'text': 'Debug - Current bot status: <br>' + str(tracker) + '<br> Current length of the message is ' + str(len(words)) + '<br> Words test ' + event_message
-                }
-            })
-        else:
-            widgets.append({
-                'textParagraph': {
-                    'text': "Sorry, I don't think I got that. Type 'start' to get started:)"
-                }
-            })
 
 
 
 
-    if header != None:
-        cards.append(header)
-
-    cards.append({  'header': {
-                    'title': 'Service Manager Support',
-                    'subtitle': 'Connecting with SM faster than ever',
-                    'imageUrl': 'https://ibb.co/cAtewp',
-                    'imageStyle': 'IMAGE'
-                  },
-                    'sections': [{'widgets': widgets }]})
-    response['cards'] = cards
-
-    return response
-
-#c_stage means the stage of the cancel
-#c_message means the message that we will send back
-#we need more information to check the coordinates
-def send_cancel_message(num, c_stage):
-    if num != 0 and c_stage == 1:
-        c_message = 'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
-        return c_message
-    elif num !=0 and c_stage == 2:
-        c_message = 'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>4.Cancel<br>Please select one of these options'
-
-
-
-
-def respond_to_interactive_card_click(action_name, custom_params):
-    """Creates a response for when the user clicks on an interactive card.
-    See the guide for creating interactive cards
-    https://developers.google.com/hangouts/chat/how-tos/cards-onclick
-    Args:
-        action_name: the name of the custom action defined in the original bot response
-        custom_params: the parameters defined in the original bot response
-    """
-    message = 'You clicked {}'.format(
-        'a text button' if action_name == INTERACTIVE_TEXT_BUTTON_ACTION
-            else 'an image button')
-
-    original_message = ""
-
-    if custom_params[0]['key'] == INTERACTIVE_BUTTON_PARAMETER_KEY:
-        original_message = custom_params[0]['value']
-    else:
-        original_message = '<i>Cannot determine original message</i>'
-
-    # If you want to respond to the same room but with a new message,
-    # change the following value to NEW_MESSAGE.
-    action_response = 'UPDATE_MESSAGE'
-
-    return {
-        'actionResponse': {
-            'type': action_response
-        },
-        'cards': [
-            {
-                'header': {
-                    'title': BOT_HEADER,
-                    'subtitle': 'Interactive card clicked',
-                    'imageUrl': 'https://goo.gl/5obRKj',
-                    'imageStyle': 'IMAGE'
-                }
-            },
-            {
-                'sections': [
-                    {
-                        'widgets': [
-                            {
-                                'textParagraph': {
-                                    'text': message
-                                }
-                            },
-                            {
-                                'keyValue': {
-                                    'topLabel': 'Original message',
-                                    'content': original_message
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
-
-
-
+"""
 
 
 
