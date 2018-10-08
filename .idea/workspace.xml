@@ -21,12 +21,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="10630" />
+          <entry key="py" value="10635" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="10630" />
+          <entry key="Python" value="10635" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open" />
@@ -39,11 +39,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="116" column="41" lean-forward="true" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="41" />
+            <state relative-caret-position="776">
+              <caret line="161" selection-start-line="161" selection-end-line="161" />
               <folding>
                 <element signature="e#576#590#0" expanded="true" />
-                <marker date="1538998716000" expanded="true" signature="13237:13827" ph="..." />
+                <marker date="1538998977000" expanded="true" signature="13237:13827" ph="..." />
               </folding>
             </state>
           </provider>
@@ -145,11 +145,11 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="116" column="41" lean-forward="true" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="41" />
+        <state relative-caret-position="776">
+          <caret line="161" selection-start-line="161" selection-end-line="161" />
           <folding>
             <element signature="e#576#590#0" expanded="true" />
-            <marker date="1538998716000" expanded="true" signature="13237:13827" ph="..." />
+            <marker date="1538998977000" expanded="true" signature="13237:13827" ph="..." />
           </folding>
         </state>
       </provider>
