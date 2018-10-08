@@ -21,7 +21,6 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 
 app = Flask(__name__)
-
 INTERACTIVE_TEXT_BUTTON_ACTION = "doTextButtonAction"
 INTERACTIVE_IMAGE_BUTTON_ACTION = "doImageButtonAction"
 INTERACTIVE_BUTTON_PARAMETER_KEY = "param_key"
@@ -126,6 +125,7 @@ def create_card_response(event_message):
     cards = list()
     widgets = list()
     header = None
+    global tracker
 
     words = event_message.lower().split()
     # Event message = @"Service Manager bot"  debug
@@ -156,7 +156,8 @@ def create_card_response(event_message):
                     'text':'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
                 }
              })
-            tracker['start'] = tracker['start'] + 1
+            tracker['start'] += 1
+
         elif word == 'start' and tracker['start'] == 1:
             tracker = {key:0 for key in tracker}
             widgets.append({
@@ -197,6 +198,7 @@ def create_card_response(event_message):
             })
             tracker['2'] += 1
             tracker['cancel'] += 1
+
         elif word == 'yes' and tracker['2'] == 3 and tracker['cancel'] == 3 and check_IP_address(ip_address) == True:
             widgets.append({
                  'textParagraph': {
@@ -278,8 +280,6 @@ def create_card_response(event_message):
                     }
                 })
                 tracker['cancel'] -=1
-
-
         elif word == 'debug':
             widgets.append({
                 'textParagraph': {
@@ -292,6 +292,7 @@ def create_card_response(event_message):
                     'text': "Sorry, I don't think I got that. Type 'start' to get started:)"
                 }
             })
+
     if header != None:
         cards.append(header)
 
@@ -322,6 +323,7 @@ def check_IP_address(ip):
         return True
     else:
         return False
+
 
 """
    Later will be deleted if we no longer use it. 
