@@ -114,7 +114,7 @@ tracker = {
        "cancel":0
     }
 
-def create_card_response(event_message, create_time): #changed
+def create_card_response(event_message):
     """Creates a card response based on the message sent in Hangouts Chat.
     See the reference for JSON keys and format for cards:
     https://developers.google.com/hangouts/chat/reference/message-formats/cards
@@ -322,65 +322,6 @@ def check_IP_address(ip):
         return True
     else:
         return False
-
-def respond_to_interactive_card_click(action_name, custom_params):
-    """Creates a response for when the user clicks on an interactive card.
-    See the guide for creating interactive cards
-    https://developers.google.com/hangouts/chat/how-tos/cards-onclick
-    Args:
-        action_name: the name of the custom action defined in the original bot response
-        custom_params: the parameters defined in the original bot response
-    """
-    message = 'You clicked {}'.format(
-        'a text button' if action_name == INTERACTIVE_TEXT_BUTTON_ACTION
-            else 'an image button')
-
-    original_message = ""
-
-    if custom_params[0]['key'] == INTERACTIVE_BUTTON_PARAMETER_KEY:
-        original_message = custom_params[0]['value']
-    else:
-        original_message = '<i>Cannot determine original message</i>'
-
-    # If you want to respond to the same room but with a new message,
-    # change the following value to NEW_MESSAGE.
-    action_response = 'UPDATE_MESSAGE'
-
-    return {
-        'actionResponse': {
-            'type': action_response
-        },
-        'cards': [
-            {
-                'header': {
-                    'title': BOT_HEADER,
-                    'subtitle': 'Interactive card clicked',
-                    'imageUrl': 'https://goo.gl/5obRKj',
-                    'imageStyle': 'IMAGE'
-                }
-            },
-            {
-                'sections': [
-                    {
-                        'widgets': [
-                            {
-                                'textParagraph': {
-                                    'text': message
-                                }
-                            },
-                            {
-                                'keyValue': {
-                                    'topLabel': 'Original message',
-                                    'content': original_message
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
-
 
 """
    Later will be deleted if we no longer use it. 
