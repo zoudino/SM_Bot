@@ -159,52 +159,53 @@ def create_card_response(event_message):
              })
             tracker['start'] += 1
         elif word == 'start' and tracker['start'] == 1:
-            # The whole program should restart again. So, clear all the data.
             tracker = {key:0 for key in tracker}
             widgets.append({
                 'textParagraph': {
                     'text': 'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
                 }
             })
-        elif word == '1':  # The bot will tell him the option 1 is still in development progress.  Later for more improvement
+        elif word == '1':
             widgets.append({
                 'textParagraph': {
                     'text': 'Sorry, this feature is still in progress. Please type "cancel" for returning the previous window'
                 }
             })
-        elif word == '2' and tracker['2'] == 0:  # if the user chose 2 for a start.
-            tracker['2'] +=1
-            tracker['cancel'] +=1  # the user will get the opportunity to add 1 in cancel.
+        elif word == '2' and tracker['2'] == 0:
             widgets.append({
                  'textParagraph' : {
                     'text':'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>Cancel<br>Please select one of these options'
                 }
             })
-        elif word == '2' and tracker['2'] == 1:
             tracker['2'] += 1
-            tracker['cancel'] +=1
+            tracker['cancel'] += 1
+
+        elif word == '2' and tracker['2'] == 1:
             widgets.append({
                  'textParagraph': {
                     'text':' You have selected option 2, IP address. To cancel and make a new selection, type CANCEL. Otherwise, please enter the IP address of the CI you want to update.'
                 }
             })
-        elif tracker['2'] == 2 and tracker['cancel'] == 2: # check the data we have and then return the following answer.
             tracker['2'] += 1
             tracker['cancel'] += 1
+            
+        elif tracker['2'] == 2 and tracker['cancel'] == 2:
             ip_address = word
             widgets.append({
                  'textParagraph': {
                     'text':' You have entered ' + word + '<br>Is this the IP address you want to lookup? Plese incidate yes or no'
                 }
-            }) #for this part, we need to connect with the backend and check the progress
-        elif word == 'yes' and tracker['2'] == 3 and tracker['cancel'] == 3 and check_IP_address(ip_address) == True:
+            })
             tracker['2'] += 1
             tracker['cancel'] += 1
+        elif word == 'yes' and tracker['2'] == 3 and tracker['cancel'] == 3 and check_IP_address(ip_address) == True:
             widgets.append({
                  'textParagraph': {
                     'text':'You IP address matched with the following configuration item <br>CID01234567890<br>G1nwwhatever991<br>127.0.0.1<br> Is this the configuration Item you want to update? Please type yes or no'
                 }
             })
+            tracker['2'] += 1
+            tracker['cancel'] += 1
         elif word == 'yes' and tracker['2'] == 3 and tracker['cancel'] == 3 and check_IP_address(ip_address) == False:
             widgets.append({
                 'textParagraph': {
@@ -212,37 +213,37 @@ def create_card_response(event_message):
                 }
             })
         elif word == 'yes' and tracker['2'] == 4 and tracker['cancel'] == 4: # the unique identifier will help to keep track of the progress of the conversation.
-            tracker['2'] += 1
-            tracker['cancel'] += 1
             widgets.append({
                  'textParagraph': {
                     'text':'What data do you want to update for this CI? Please select one of the following options:<br>a.Owner<br>b.Service(s)<br>c.Status<br>d.Compliance category(PCI1,PCI2,SOX,and/or SSAE)<br>e.Description'
                 }
             })
-        elif word == 'a' and tracker['2'] == 5 and tracker['cancel'] == 5:
             tracker['2'] += 1
             tracker['cancel'] += 1
+        elif word == 'a' and tracker['2'] == 5 and tracker['cancel'] == 5:
             widgets.append({
                  'textParagraph': {
                     'text':'You have chosen to update the owner of this configuration item. Is that correct? Please enter yes or no'
                 }
             })
-        elif word == 'yes' and tracker['2'] == 6 and tracker['cancel'] == 6:
             tracker['2'] += 1
             tracker['cancel'] += 1
+        elif word == 'yes' and tracker['2'] == 6 and tracker['cancel'] == 6:
             widgets.append({
                  'textParagraph': {
                     'text':'Please enter the valid email address of the new owner you want to assign to this configuration item'
                 }
             })
-        elif tracker['2'] == 7 and tracker['cancel'] == 7: # this is the stage for email address.
             tracker['2'] += 1
             tracker['cancel'] += 1
+        elif tracker['2'] == 7 and tracker['cancel'] == 7:
             widgets.append({
                  'textParagraph': {
                     'text':'You entered' + 'Darren.Kroll@global.com' + '<br>Is this the update you wish to request?'
                 }
             })
+            tracker['2'] += 1
+            tracker['cancel'] += 1
         elif word == 'yes'and tracker['2'] == 8 and tracker['cancel'] == 8:
             widgets.append({
                  'textParagraph': {
