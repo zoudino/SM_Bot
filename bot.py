@@ -28,7 +28,6 @@ INTERACTIVE_TEXT_BUTTON_ACTION = "doTextButtonAction"
 INTERACTIVE_IMAGE_BUTTON_ACTION = "doImageButtonAction"
 INTERACTIVE_BUTTON_PARAMETER_KEY = "param_key"
 BOT_HEADER = 'Card Bot Python'
-
 """This is coodinate to track the progress of the conversation"""
 tracker = {
         "start":0,
@@ -42,6 +41,7 @@ tracker = {
 
 "Variables that will be used in checking information of the SM"
 ip_address = ''
+error_message = 0
 
 @app.route('/', methods=['POST'])
 def home_post():
@@ -133,9 +133,10 @@ def create_card_response(event_message):
     cards = list()
     widgets = list()
     header = None
-    error_message = 0
+
     global tracker
     global ip_address
+    global error_message
 
     words = event_message.lower().split()
     # Event message = @"Service Manager bot"  debug
