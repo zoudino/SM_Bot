@@ -135,6 +135,15 @@ def create_card_response(event_message):
     GREETING_KEYWORDS = ("hello", "hi","sup","what's up")
     GREETING_RESPONSES = ["'sup bro","hey","hi","hey you get my snap"]
 
+    tracker['start'] = 0
+    tracker['1'] = 0
+    tracker['2'] = 0
+    tracker['3'] = 0
+    tracker['yes'] = 0
+    tracker['cancel'] = 0
+    tracker['no'] = 0
+    
+
     for word in words:
         if word == 'header':
             header = {
@@ -188,7 +197,7 @@ def create_card_response(event_message):
             })
             tracker['2'] += 1
             tracker['cancel'] += 1
-            
+
         elif tracker['2'] == 2 and tracker['cancel'] == 2:
             ip_address = word
             widgets.append({
