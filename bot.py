@@ -142,7 +142,6 @@ def create_card_response(event_message):
     tracker['yes'] = 0
     tracker['cancel'] = 0
     tracker['no'] = 0
-    
 
     for word in words:
         if word == 'header':
@@ -161,12 +160,13 @@ def create_card_response(event_message):
                 }
             })
         elif word =='start':
+            tracker['start']
             widgets.append({
                 'textParagraph' : {
                     'text':'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
                 }
              })
-            tracker['start'] += 1
+            tracker['start'] = tracker['start'] + 1
         elif word == 'start' and tracker['start'] == 1:
             tracker = {key:0 for key in tracker}
             widgets.append({
