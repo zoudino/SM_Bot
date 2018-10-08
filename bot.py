@@ -14,6 +14,9 @@
 
 import logging
 import random
+import requests
+from requests.auth import HTTPBasicAuth
+import json
 from apiclient.discovery import build, build_from_document
 from flask import Flask, render_template, request, json, make_response
 from httplib2 import Http
@@ -130,11 +133,9 @@ def create_card_response(event_message):
     cards = list()
     widgets = list()
     header = None
+    error_message = 0
     global tracker
     global ip_address
-
-
-
 
     words = event_message.lower().split()
     # Event message = @"Service Manager bot"  debug
@@ -296,12 +297,17 @@ def create_card_response(event_message):
                 }
             })
         else:
-            widgets.append({
-                'textParagraph': {
-                    'text': "Sorry, I don't think I got that. Type 'start' to get started:)"
-                }
-            })
+            error_message +=1
 
+
+
+    if event_message > 0:
+        widgets.append({
+            'textParagraph': {
+                'text': "Sorry, I don't think I got that. Type 'start' to get started:)"
+            }
+        })
+        
     if header != None:
         cards.append(header)
 
@@ -327,6 +333,12 @@ def send_cancel_message(num, c_stage):
         c_message = 'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>4.Cancel<br>Please select one of these options'
 
 def check_IP_address(ip):
+
+    """
+       Building the connection wit service manager
+       url = 'http://157.56.181.15:13080/SM/9/rest#Computer'
+       data = requests.get(url,auth = HTTPBasicAuth('chatbot','CHATBOT')).json()
+    """
     fake_data = ['127.0.0.1']
     if ip == fake_data[0]:
         return True
