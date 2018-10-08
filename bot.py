@@ -37,6 +37,9 @@ tracker = {
        "cancel":0
     }
 
+"Variables that will be used in checking information of the SM"
+ip_address = ''
+
 @app.route('/', methods=['POST'])
 def home_post():
     """Respond to POST requests to this endpoint.
@@ -114,8 +117,7 @@ def send_async_response(response, space_name, thread_id):
         body=response).execute()
 
 
-"Variables that will be used in checking information of the SM"
-ip_address = ''
+
 def create_card_response(event_message):
     """Creates a card response based on the message sent in Hangouts Chat.
     See the reference for JSON keys and format for cards:
@@ -147,7 +149,7 @@ def create_card_response(event_message):
                 'header': {
                     'title': 'Service Manager Ticket Support',
                     'subtitle': 'This bot is designed to help you quickly upadte the information of a ticket',
-                    'imageUrl': 'https://goo.gl/5obRKj', # This picture is not working and will be replaced soon.
+                    'imageUrl': 'https://goo.gl/aeDtrS', # This picture is not working and will be replaced soon.
                     'imageStyle': 'IMAGE'
                 }
             }
@@ -247,7 +249,7 @@ def create_card_response(event_message):
         elif tracker['2'] == 7 and tracker['cancel'] == 7:
             widgets.append({
                  'textParagraph': {
-                    'text':'You entered' + 'Darren.Kroll@global.com' + '<br>Is this the update you wish to request?'
+                    'text':'You entered' + word + '<br>Is this the update you wish to request?'
                 }
             })
             tracker['2'] += 1
@@ -306,7 +308,7 @@ def create_card_response(event_message):
     cards.append({  'header': {
                     'title': 'Service Manager Support',
                     'subtitle': 'Connecting with SM faster than ever',
-                    'imageUrl': 'https://ibb.co/cAtewp',
+                    'imageUrl': 'https://goo.gl/aeDtrS',
                     'imageStyle': 'IMAGE'
                   },
                     'sections': [{'widgets': widgets }]})
