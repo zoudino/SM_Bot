@@ -21,7 +21,7 @@ from apiclient.discovery import build, build_from_document
 from flask import Flask, render_template, request, json, make_response
 from httplib2 import Http
 from oauth2client.service_account import ServiceAccountCredentials
-
+import socket
 
 app = Flask(__name__)
 INTERACTIVE_TEXT_BUTTON_ACTION = "doTextButtonAction"
@@ -200,7 +200,7 @@ def create_card_response(event_message):
             tracker['2'] += 1
             tracker['cancel'] += 1 # cancel == 2
 
-        elif tracker['2'] == 2 and tracker['cancel'] == 2:
+        elif validate_IP_address(word) == True and tracker['2'] == 2 and tracker['cancel'] == 2:
             ip_address = word
             widgets.append({
                  'textParagraph': {
@@ -209,7 +209,15 @@ def create_card_response(event_message):
             })
             tracker['2'] += 1
             tracker['cancel'] +=1 # cancel == 3
-
+        elif validate_IP_address(word) == False and tracker['2'] == 2 and tracker['cancel'] == 2:
+            ip_address = word
+            widgets.append({
+                'textParagraph': {
+                    'text': ' You have entered a wrong IP address. Please re-enter the IP address you want to lookup. Or type "finish" to end the conversation'
+                }
+            })
+            tracker['2'] += 1
+            tracker['cancel'] += 1  # cancel == 3
         elif word == 'yes' and tracker['2'] == 3 and tracker['cancel'] == 3 and check_IP_address(ip_address) == True:
             widgets.append({
                  'textParagraph': {
@@ -420,6 +428,14 @@ def check_IP_address(ip):
         return True
     else:
         return False
+
+def validate_IP_address(ip):
+    try:
+        socket.inet_aton(ip)
+        return True
+    except socket.error:
+        return False
+
 
 
 """
