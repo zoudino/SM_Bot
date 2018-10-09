@@ -155,7 +155,7 @@ def create_card_response(event_message):
                     'imageStyle': 'IMAGE'
                 }
             }
-        elif word in GREETING_KEYWORDS:
+        elif word in GREETING_KEYWORDS and tracker['start'] == 0:
             widgets.append({
                 'textParagraph': {
                     'text': random.choice(GREETING_RESPONSES)
@@ -189,7 +189,7 @@ def create_card_response(event_message):
                     'text':'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>Cancel<br>Please select one of these options'
                 }
             })
-            tracker['2'] += 1
+            tracker['2'] += 1 #2== 1
             tracker['cancel'] += 1 # cancel == 1
         elif word == '2' and tracker['2'] == 1:
             widgets.append({
@@ -197,9 +197,16 @@ def create_card_response(event_message):
                     'text':' You have selected option 2, IP address. To cancel and make a new selection, type CANCEL. Otherwise, please enter the IP address of the CI you want to update.'
                 }
             })
-            tracker['2'] += 1
+            tracker['2'] += 1 # 2 == 2
             tracker['cancel'] += 1 # cancel == 2
-
+        elif word == 'cancel' and tracker['2'] == 2 and tracker['cancel'] ==2:
+            widgets.append({
+                'textParagraph': {
+                    'text': 'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>Cancel<br>Please select one of these options'
+                }
+            })
+            tracker['2'] -= 1  # 2== 1
+            tracker['cancel'] -= 1  # cancel == 1
         elif validate_IP_address(word) == True and tracker['2'] == 2 and tracker['cancel'] == 2:
             ip_address = word
             widgets.append({
@@ -216,8 +223,6 @@ def create_card_response(event_message):
                     'text': ' You have entered a wrong IP address. Please re-enter the IP address you want to lookup. Or type "finish" to end the conversation'
                 }
             })
-            tracker['2'] += 1
-            tracker['cancel'] += 1  # cancel == 3
         elif word == 'yes' and tracker['2'] == 3 and tracker['cancel'] == 3 and check_IP_address(ip_address) == True:
             widgets.append({
                  'textParagraph': {
