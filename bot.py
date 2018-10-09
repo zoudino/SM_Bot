@@ -22,6 +22,7 @@ from flask import Flask, render_template, request, json, make_response
 from httplib2 import Http
 from oauth2client.service_account import ServiceAccountCredentials
 import socket
+from validate_email import validate_email
 
 app = Flask(__name__)
 INTERACTIVE_TEXT_BUTTON_ACTION = "doTextButtonAction"
@@ -288,7 +289,7 @@ def create_card_response(event_message):
             })
             tracker['2'] -= 2
             tracker['cancel'] -= 2
-        elif tracker['2'] == 7 and tracker['cancel'] == 7:
+        elif validate_email_address(word) == True and tracker['2'] == 7 and tracker['cancel'] == 7:
             widgets.append({
                  'textParagraph': {
                     'text':'You entered ' + word + '<br>Is this the update you wish to request?'
@@ -296,6 +297,12 @@ def create_card_response(event_message):
             })
             tracker['2'] += 1 # 2 == 8
             tracker['cancel'] += 1 # cancel == 8
+        elif validate_email_address(word) == True and tracker['2'] == 7 and tracker['cancel'] == 7:
+            widgets.append({
+                'textParagraph': {
+                    'text': 'Sorry, the format of your email address is wrong. Please enter the right email address. Or type "finish" to end the conversation'
+                }
+            })
         elif word == 'yes'and tracker['2'] == 8 and tracker['cancel'] == 8:
             widgets.append({
                  'textParagraph': {
@@ -440,6 +447,11 @@ def validate_IP_address(ip):
         return True
     except socket.error:
         return False
+
+def validate_email_address(email):
+    # This function only check the email string is valid format
+    is_valid = validate_email(email)
+    return is_valid
 
 
 
