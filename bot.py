@@ -365,6 +365,8 @@ def send_cancel_message(num, c_stage):
     if num == 2:
         if c_stage == 1:
             c_message = 'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
+            tracker['cancel'] -= 1
+            tracker['2'] -= 1
             return c_message
         elif c_stage == 2:
             c_message = 'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>4.Cancel<br>Please select one of these options'
