@@ -28,7 +28,7 @@ INTERACTIVE_TEXT_BUTTON_ACTION = "doTextButtonAction"
 INTERACTIVE_IMAGE_BUTTON_ACTION = "doImageButtonAction"
 INTERACTIVE_BUTTON_PARAMETER_KEY = "param_key"
 BOT_HEADER = 'Card Bot Python'
-"""This is coodinate to track the progress of the conversation"""
+"""This is coodinate to track the progress of the conversation. So, the conversation can be very unique. """
 tracker = {
         "start":0,
             "1":0,
@@ -144,7 +144,7 @@ def create_card_response(event_message):
 
     # let's add some conversation into the bot. So, we can add some flexability into our chat.
     GREETING_KEYWORDS = ("hello", "hi","hey","what's up", )
-    GREETING_RESPONSES = ["Hi there. Thanks for talking to me:)  My name is ?. Happy to help you improving your experience with Service Manager. Please type 'start' to begin the see what I can do."]
+    GREETING_RESPONSES = ["Hi there. My name is ???. Happy to help you improving your experience with Service Manager. Please type 'start' to see what I can do."]
     for word in words:
         if word == 'header':
             header = {
@@ -167,7 +167,7 @@ def create_card_response(event_message):
                     'text':' How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
                 }
              })
-            tracker['start'] += 1
+            tracker['start'] += 1 # start == 1
 
         elif word == 'start' and tracker['start'] == 1:
             tracker = {key:0 for key in tracker}
@@ -304,24 +304,18 @@ def create_card_response(event_message):
                         'text': send_cancel_message(1, tracker['cancel'])
                     }
                 })
-                tracker['1'] -= 1
-                tracker['cancel'] -=1
             elif tracker['2'] != 0:
                 widgets.append({
                     'textParagraph': {
                         'text': send_cancel_message(2, tracker['cancel'])
                     }
                 })
-                tracker['2'] -= 1
-                tracker['cancel'] -=1
             elif tracker['3'] != 0:
                 widgets.append({
                     'textParagraph': {
                         'text': send_cancel_message(3, tracker['cancel'])
                     }
                 })
-                tracker['3'] -= 1
-                tracker['cancel'] -=1
         elif word == 'debug':
             widgets.append({
                 'textParagraph': {
@@ -371,8 +365,6 @@ def send_cancel_message(num, c_stage):
     if num == 2:
         if c_stage == 1:
             c_message = 'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
-            tracker['cancel'] -=1
-            tracker['2'] -=1
             return c_message
         elif c_stage == 2:
             c_message = 'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>4.Cancel<br>Please select one of these options'
