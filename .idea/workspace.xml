@@ -21,12 +21,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="17014" />
+          <entry key="py" value="17025" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="17014" />
+          <entry key="Python" value="17025" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open" />
@@ -39,16 +39,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="303" column="17" lean-forward="true" selection-start-line="303" selection-start-column="17" selection-end-line="303" selection-end-column="17" />
+            <state relative-caret-position="2776">
+              <caret line="450" column="21" lean-forward="true" selection-start-line="450" selection-start-column="21" selection-end-line="450" selection-end-column="21" />
               <folding>
                 <element signature="e#576#590#0" expanded="true" />
                 <element signature="e#1097#2848#0" />
                 <element signature="e#2903#3105#0" />
                 <element signature="e#3173#3945#0" />
                 <element signature="e#5106#5506#0" />
-                <marker date="1539093449000" expanded="true" signature="18859:19497" ph="..." />
-                <marker date="1539093449000" expanded="true" signature="19374:19379" ph="..." />
+                <marker date="1539093992000" expanded="true" signature="18860:19498" ph="..." />
+                <marker date="1539093992000" expanded="true" signature="19375:19380" ph="..." />
               </folding>
             </state>
           </provider>
@@ -156,16 +156,16 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="303" column="17" lean-forward="true" selection-start-line="303" selection-start-column="17" selection-end-line="303" selection-end-column="17" />
+        <state relative-caret-position="2776">
+          <caret line="450" column="21" lean-forward="true" selection-start-line="450" selection-start-column="21" selection-end-line="450" selection-end-column="21" />
           <folding>
             <element signature="e#576#590#0" expanded="true" />
             <element signature="e#1097#2848#0" />
             <element signature="e#2903#3105#0" />
             <element signature="e#3173#3945#0" />
             <element signature="e#5106#5506#0" />
-            <marker date="1539093449000" expanded="true" signature="18859:19497" ph="..." />
-            <marker date="1539093449000" expanded="true" signature="19374:19379" ph="..." />
+            <marker date="1539093992000" expanded="true" signature="18860:19498" ph="..." />
+            <marker date="1539093992000" expanded="true" signature="19375:19380" ph="..." />
           </folding>
         </state>
       </provider>

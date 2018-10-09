@@ -297,7 +297,7 @@ def create_card_response(event_message):
             })
             tracker['2'] += 1 # 2 == 8
             tracker['cancel'] += 1 # cancel == 8
-        elif validate_email_address(word) == True and tracker['2'] == 7 and tracker['cancel'] == 7:
+        elif validate_email_address(word) == False and tracker['2'] == 7 and tracker['cancel'] == 7:
             widgets.append({
                 'textParagraph': {
                     'text': 'Sorry, the format of your email address is wrong. Please enter the right email address. Or type "finish" to end the conversation'
