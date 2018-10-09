@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76b7e36e-37c6-414a-b15c-49ad20262400" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,12 +22,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="12404" />
+          <entry key="py" value="15455" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="12404" />
+          <entry key="Python" value="15455" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open" />
@@ -39,15 +40,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="312" lean-forward="true" selection-start-line="312" selection-end-line="312" />
+            <state relative-caret-position="847">
+              <caret line="416" column="23" lean-forward="true" selection-start-line="416" selection-start-column="23" selection-end-line="416" selection-end-column="23" />
               <folding>
                 <element signature="e#576#590#0" expanded="true" />
                 <element signature="e#1097#2848#0" />
                 <element signature="e#2903#3105#0" />
                 <element signature="e#3173#3945#0" />
-                <marker date="1539014215000" expanded="true" signature="13184:13984" ph="..." />
-                <marker date="1539014215000" expanded="true" signature="13984:13986" ph="..." />
+                <element signature="e#5106#5506#0" />
+                <element signature="e#5520#5666#0" />
+                <marker date="1539088191000" expanded="true" signature="17609:17955" ph="..." />
+                <marker date="1539088191000" expanded="true" signature="17955:17957" ph="..." />
               </folding>
             </state>
           </provider>
@@ -155,15 +158,17 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="312" lean-forward="true" selection-start-line="312" selection-end-line="312" />
+        <state relative-caret-position="847">
+          <caret line="416" column="23" lean-forward="true" selection-start-line="416" selection-start-column="23" selection-end-line="416" selection-end-column="23" />
           <folding>
             <element signature="e#576#590#0" expanded="true" />
             <element signature="e#1097#2848#0" />
             <element signature="e#2903#3105#0" />
             <element signature="e#3173#3945#0" />
-            <marker date="1539014215000" expanded="true" signature="13184:13984" ph="..." />
-            <marker date="1539014215000" expanded="true" signature="13984:13986" ph="..." />
+            <element signature="e#5106#5506#0" />
+            <element signature="e#5520#5666#0" />
+            <marker date="1539088191000" expanded="true" signature="17609:17955" ph="..." />
+            <marker date="1539088191000" expanded="true" signature="17955:17957" ph="..." />
           </folding>
         </state>
       </provider>
