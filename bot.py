@@ -446,17 +446,17 @@ def validate_CI(ci):
     # building the connection and putting all the CI data into the array.
     url = 'http://157.56.181.15:13080/SM/9/rest/ucmdbNodes'
     data = requests.get(url, auth=HTTPBasicAuth('chatbot', 'CHATBOT')).json()
-    data_api = json.load(read_file)
+    data_api = json.load(data)
     all_CIs = []
+    answer = False
     for x in range(len(data_api['content'])):
         all_CIs.append(data_api['content'][x]['ucmdbNode']['ConfigurationItem'])
 
     for y in range(len(all_CIs)):
         if ci == all_CIs[y]:
-            return True
-            break
+            answer = True
 
-    return False
+    return answer
 
 
 
@@ -480,10 +480,7 @@ def validate_IP_address(ip):
     except socket.error:
         return False
 
-def validate_email_address(email):
-    # This function only check the email string is valid format
-    is_valid = validate_email(email)
-    return is_valid
+
 
 
 
