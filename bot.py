@@ -176,13 +176,12 @@ def create_card_response(event_message):
                     'text': 'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
                 }
             })
-        elif word == '1' and tracker['1'] == 0:
+        elif word == '1' and tracker['1'] == 0 and tracker['2'] == 0:
             widgets.append({
                 'textParagraph': {
                     'text': 'Sorry, this feature is still in progress. Please type "cancel" for returning the previous window'
                 }
             })
-            tracker['1'] +=1
         elif word == '2' and tracker['2'] == 0:
             widgets.append({
                  'textParagraph' : {
@@ -191,13 +190,13 @@ def create_card_response(event_message):
             })
             tracker['2'] += 1 #2== 1
             tracker['cancel'] += 1 # cancel == 1
-        elif word == '1' and tracker['2'] == 1:
+        elif word == '1' and tracker['2'] == 1 and tracker['1'] == 0 and tracker['cancel'] == 1:
             widgets.append({
                 'textParagraph': {
                     'text': ' You have selected option 1. Unique configuration item identifier.  To cancel and make a new selection, type CANCEL. Otherwise, please enter the CI identifier.'
                 }
             })
-            tracker['1'] += 1  # 2 == 2
+            tracker['1'] += 1  # 1 == 1
             tracker['cancel'] += 1  # cancel == 2
         elif validate_CI(word) == True and tracker['1'] == 1 and tracker['2'] ==1 :
             widgets.append({
