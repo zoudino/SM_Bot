@@ -1,3 +1,10 @@
+import requests
+from requests.auth import HTTPBasicAuth
+import json
+from httplib2 import Http
+import socket
+
+
 def validate_CI(ci):
     # building the connection and putting all the CI data into the array.
     # feeling confused about
