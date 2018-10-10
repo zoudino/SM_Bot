@@ -230,7 +230,7 @@ def create_card_response(event_message):
             })
             tracker['2'] -= 1  # 2== 1
             tracker['cancel'] -= 1  # cancel == 1
-        elif validate_IP_address(word) == True and tracker['2'] == 2 and tracker['cancel'] == 2:
+        elif bot_function.validate_IP_address(word) == True and tracker['2'] == 2 and tracker['cancel'] == 2:
             ip_address = word
             widgets.append({
                  'textParagraph': {
@@ -239,7 +239,7 @@ def create_card_response(event_message):
             })
             tracker['2'] += 1
             tracker['cancel'] +=1 # cancel == 3
-        elif validate_IP_address(word) == False and tracker['2'] == 2 and tracker['cancel'] == 2:
+        elif bot_function.validate_IP_address(word) == False and tracker['2'] == 2 and tracker['cancel'] == 2:
             ip_address = word
             widgets.append({
                 'textParagraph': {
