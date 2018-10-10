@@ -42,6 +42,7 @@ tracker = {
 "Variables that will be used in checking information of the SM"
 ip_address = ''
 error_message = 0
+get_all_CI()
 
 @app.route('/', methods=['POST'])
 def home_post():
@@ -444,21 +445,24 @@ def send_cancel_message(num, c_stage):
 
 def validate_CI(ci):
     # building the connection and putting all the CI data into the array.
-    url = 'http://157.56.181.15:13080/SM/9/rest/ucmdbNodes'
-    data = requests.get(url, auth=HTTPBasicAuth('chatbot', 'CHATBOT')).json()
-    data_api = json.load(data)
+    # feeling confused about
+    with open("./CI.json", "r") as read_file:
+        data_api = json.load(read_file)
     all_CIs = []
     answer = False
     for x in range(len(data_api['content'])):
         all_CIs.append(data_api['content'][x]['ucmdbNode']['ConfigurationItem'])
-
     for y in range(len(all_CIs)):
         if ci == all_CIs[y]:
             answer = True
 
     return answer
 
-
+def get_all_CI():
+    url = 'http://157.56.181.15:13080/SM/9/rest/ucmdbNodes'
+    data = requests.get(url, auth=HTTPBasicAuth('chatbot', 'CHATBOT')).json()
+    with open('./CI.json','w') as outfile:
+        json.dump(data, outfile)
 
 
 def check_IP_address(ip):
