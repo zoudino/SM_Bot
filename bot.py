@@ -44,7 +44,7 @@ tracker = {
 "Variables that will be used in checking information of the SM"
 ip_address = ''
 error_message = 0
-bot_function.get_all_CI()
+
 
 @app.route('/', methods=['POST'])
 def home_post():
@@ -201,16 +201,16 @@ def create_card_response(event_message):
             })
             tracker['1'] += 1  # 1 == 1
             tracker['cancel'] += 1  # cancel == 2
-        elif validate_CI(word) == True and tracker['1'] == 1 and tracker['2'] ==1 :
+        elif bot_function.validate_CI(word) == True and tracker['1'] == 1 and tracker['2'] ==1 :
             widgets.append({
                 'textParagraph':{
                     'text':'You got it!!'
                 }
             })
-        elif validate_CI(word) == True and tracker['1'] == 1 and tracker['2'] ==1:
+        elif bot_function.validate_CI(word) == True and tracker['1'] == 1 and tracker['2'] ==1:
             widgets.append({
                 'textParagraph': {
-                    'text': 'Sorry to let you cry. Hahaha!!'
+                    'text': 'Sorry to let you cry:('
                 }
             })
 
