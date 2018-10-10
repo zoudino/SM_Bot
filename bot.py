@@ -22,7 +22,6 @@ from flask import Flask, render_template, request, json, make_response
 from httplib2 import Http
 from oauth2client.service_account import ServiceAccountCredentials
 import socket
-from validate_email import validate_email
 
 app = Flask(__name__)
 INTERACTIVE_TEXT_BUTTON_ACTION = "doTextButtonAction"
@@ -187,11 +186,32 @@ def create_card_response(event_message):
         elif word == '2' and tracker['2'] == 0:
             widgets.append({
                  'textParagraph' : {
-                    'text':'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you wanto update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>Cancel<br>Please select one of these options'
+                    'text':'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you want update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>Cancel<br>Please select one of these options'
                 }
             })
             tracker['2'] += 1 #2== 1
             tracker['cancel'] += 1 # cancel == 1
+        elif word == '1' and tracker['2'] == 1:
+            widgets.append({
+                'textParagraph': {
+                    'text': ' You have selected option 1. Unique configuration item identifier.  To cancel and make a new selection, type CANCEL. Otherwise, please enter the CI identifier.'
+                }
+            })
+            tracker['1'] += 1  # 2 == 2
+            tracker['cancel'] += 1  # cancel == 2
+        elif validate_CI(word) == True and tracker['1'] == 1 and tracker['2'] ==1 :
+            widgets.append({
+                'textParagraph':{
+                    'text':'You got it!!'
+                }
+            })
+        elif validate_CI(word) == True and tracker['1'] == 1 and tracker['2'] ==1:
+            widgets.append({
+                'textParagraph': {
+                    'text': 'Sorry to let you cry. Hahaha!!'
+                }
+            })
+
         elif word == '2' and tracker['2'] == 1:
             widgets.append({
                  'textParagraph': {
@@ -289,7 +309,7 @@ def create_card_response(event_message):
             })
             tracker['2'] -= 2
             tracker['cancel'] -= 2
-        elif tracker['2'] == 7 and tracker['cancel'] == 7: # validate_email_address(word) == True and 
+        elif tracker['2'] == 7 and tracker['cancel'] == 7: # validate_email_address(word) == True and
             widgets.append({
                  'textParagraph': {
                     'text':'You entered ' + word + '<br>Is this the update you wish to request?'
@@ -423,8 +443,26 @@ def send_cancel_message(num, c_stage):
             return c_message
 
 
-def check_IP_address(ip):
+def validate_CI(ci):
+    # building the connection and putting all the CI data into the array.
+    url = 'http://157.56.181.15:13080/SM/9/rest/ucmdbNodes'
+    data = requests.get(url, auth=HTTPBasicAuth('chatbot', 'CHATBOT')).json()
+    data_api = json.load(read_file)
+    all_CIs = []
+    for x in range(len(data_api['content'])):
+        all_CIs.append(data_api['content'][x]['ucmdbNode']['ConfigurationItem'])
 
+    for y in range(len(all_CIs)):
+        if ci == all_CIs[y]:
+            return True
+            break
+
+    return False
+
+
+
+
+def check_IP_address(ip):
     """
        Building the connection wit service manager
        url = 'http://157.56.181.15:13080/SM/9/rest#Computer'
