@@ -44,6 +44,7 @@ tracker = {
 "Variables that will be used in checking information of the SM"
 ip_address = ''
 error_message = 0
+bot_function.get_all_CI()
 
 
 @app.route('/', methods=['POST'])
