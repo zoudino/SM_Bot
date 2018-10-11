@@ -216,7 +216,7 @@ def create_card_response(event_message):
         elif bot_function.validate_CI(word) == False and tracker['1'] == 1 and tracker['2'] ==1:
             widgets.append({
                 'textParagraph': {
-                    'text': 'Sorry to let you cry:('
+                    'text': 'Ops, something went wrong with your CI ' + word + 'Please check this CI and re-enter and value'
                 }
             })
 
