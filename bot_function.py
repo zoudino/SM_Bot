@@ -13,7 +13,7 @@ def validate_CI(ci):
     all_CIs = []
     answer = False
     for x in range(len(data_api['content'])):
-        all_CIs.append(data_api['content'][x]['ucmdbNode']['ConfigurationItem'])
+        all_CIs.append(data_api['content'][x]['ucmdbNode']['ConfigurationItem'].lower())
     for y in range(len(all_CIs)):
         if ci == all_CIs[y]:
             answer = True
