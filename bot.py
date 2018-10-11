@@ -238,7 +238,7 @@ def create_card_response(event_message):
         elif word == 'c' and tracker['1'] == 2 and tracker['2'] == 1:  # incomplete let's say user choose c
             widgets.append({
                 'textParagraph': {
-                    'text': 'Select one to update:<br>a.open</br>b.Discovered<br>c.Received<br>d.In Stock<br>e.Reserved<br>f. In Use<br>g.Maintenance<br>h.Retired/Consumed<br>i.Disposed'
+                    'text': 'Select one to update:<br>a.open <br>b.Discovered<br>c.Received<br>d.In Stock<br>e.Reserved<br>f. In Use<br>g.Maintenance<br>h.Retired/Consumed<br>i.Disposed'
                 }
             })
             tracker['1'] += 1 # 1==3
