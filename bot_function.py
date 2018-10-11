@@ -13,21 +13,20 @@ def validate_CI(ci):
     all_CIs = []
     answer = False
     for x in range(len(data_api['content'])):
-        all_CIs.append(data_api['content'][x]['ucmdbNode']['ConfigurationItem'].lower())
+        all_CIs.append(data_api['content'][x]['Computer']['ConfigurationItem'].lower())
     for y in range(len(all_CIs)):
         if ci == all_CIs[y]:
             answer = True
-
     return answer
 
 #
 def get_all_CI():
-    url = 'http://157.56.181.15:13080/SM/9/rest/ucmdbNodes'
+    url = 'http://157.56.181.15:13080/SM/9/rest/computers'
     data = requests.get(url, auth=HTTPBasicAuth('chatbot', 'CHATBOT')).json()
     result = 'success'
-    return result
     with open('./CI.json','w') as outfile:
         json.dump(data, outfile)
+    return result
 
 def create_ticket(CI_value, change_request):
     CI_value = CI_value.upper()
