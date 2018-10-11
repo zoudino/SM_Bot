@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76b7e36e-37c6-414a-b15c-49ad20262400" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot_function.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot_function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,12 +23,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="19595" />
+          <entry key="py" value="24249" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="19595" />
+          <entry key="Python" value="24249" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -48,19 +50,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="218" column="123" selection-start-line="218" selection-start-column="123" selection-end-line="218" selection-end-column="123" />
+            <state relative-caret-position="442">
+              <caret line="255" column="17" lean-forward="true" selection-start-line="255" selection-start-column="17" selection-end-line="255" selection-end-column="17" />
               <folding>
                 <element signature="e#576#590#0" expanded="true" />
                 <element signature="e#1097#2848#0" />
                 <element signature="e#2903#3105#0" />
                 <element signature="e#3173#3945#0" />
                 <element signature="e#5106#5506#0" />
+                <element signature="e#5804#5950#0" />
+                <element signature="e#5979#6223#0" />
+                <element signature="e#6033#6276#0" />
+                <element signature="e#6657#6868#0" />
+                <element signature="e#6944#7378#0" />
+                <element signature="e#7447#7811#0" />
+                <element signature="e#9869#10230#0" />
+                <element signature="e#10021#10458#0" />
+                <element signature="e#10581#10911#0" />
+                <element signature="e#11035#11309#0" />
+                <element signature="e#11440#11864#0" />
+                <element signature="e#11952#12190#0" />
+                <element signature="e#12322#12672#0" />
+                <element signature="e#12848#13278#0" />
+                <element signature="e#13367#13587#0" />
+                <element signature="e#13675#13980#0" />
+                <element signature="e#14070#14414#0" />
+                <element signature="e#14503#14879#0" />
+                <element signature="e#14994#15264#0" />
+                <element signature="e#15354#15616#0" />
+                <element signature="e#15660#15946#0" />
+                <element signature="e#16052#16706#0" />
+                <element signature="e#12879#13049#0" />
+                <element signature="e#9705#9870#0" />
+                <element signature="e#13102#13272#0" />
+                <element signature="e#16749#17088#0" />
+                <element signature="e#17129#17279#0" />
                 <element signature="e#15079#18005#0" />
-                <marker date="1539257940000" expanded="true" signature="19746:19749" ph="..." />
               </folding>
             </state>
           </provider>
@@ -69,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="12" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+            <state relative-caret-position="60">
+              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -79,18 +107,19 @@
         <entry file="file://$PROJECT_DIR$/CI.json">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="24" selection-start-column="24" selection-end-column="24" />
+              <caret column="17" selection-start-column="17" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bot_function.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="239">
+              <caret line="33" column="31" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
+                <marker date="1539268779000" expanded="true" signature="2002:2413" ph="..." />
               </folding>
             </state>
           </provider>
@@ -124,8 +153,8 @@
       <list>
         <option value="$PROJECT_DIR$/function.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/bot.py" />
         <option value="$PROJECT_DIR$/bot_function.py" />
+        <option value="$PROJECT_DIR$/bot.py" />
       </list>
     </option>
   </component>
@@ -147,6 +176,10 @@
             <path>
               <item name="proj-chatbot-og" type="b2602c69:ProjectViewProjectNode" />
               <item name="proj-chatbot-og" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proj-chatbot-og" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -218,45 +251,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CI.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bot.py.save">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="12" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        <state relative-caret-position="60">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bot_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="33" column="31" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1539268779000" expanded="true" signature="2002:2413" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="218" column="123" selection-start-line="218" selection-start-column="123" selection-end-line="218" selection-end-column="123" />
+        <state relative-caret-position="442">
+          <caret line="255" column="17" lean-forward="true" selection-start-line="255" selection-start-column="17" selection-end-line="255" selection-end-column="17" />
           <folding>
             <element signature="e#576#590#0" expanded="true" />
             <element signature="e#1097#2848#0" />
             <element signature="e#2903#3105#0" />
             <element signature="e#3173#3945#0" />
             <element signature="e#5106#5506#0" />
+            <element signature="e#5804#5950#0" />
+            <element signature="e#5979#6223#0" />
+            <element signature="e#6033#6276#0" />
+            <element signature="e#6657#6868#0" />
+            <element signature="e#6944#7378#0" />
+            <element signature="e#7447#7811#0" />
+            <element signature="e#9869#10230#0" />
+            <element signature="e#10021#10458#0" />
+            <element signature="e#10581#10911#0" />
+            <element signature="e#11035#11309#0" />
+            <element signature="e#11440#11864#0" />
+            <element signature="e#11952#12190#0" />
+            <element signature="e#12322#12672#0" />
+            <element signature="e#12848#13278#0" />
+            <element signature="e#13367#13587#0" />
+            <element signature="e#13675#13980#0" />
+            <element signature="e#14070#14414#0" />
+            <element signature="e#14503#14879#0" />
+            <element signature="e#14994#15264#0" />
+            <element signature="e#15354#15616#0" />
+            <element signature="e#15660#15946#0" />
+            <element signature="e#16052#16706#0" />
+            <element signature="e#12879#13049#0" />
+            <element signature="e#9705#9870#0" />
+            <element signature="e#13102#13272#0" />
+            <element signature="e#16749#17088#0" />
+            <element signature="e#17129#17279#0" />
             <element signature="e#15079#18005#0" />
-            <marker date="1539257940000" expanded="true" signature="19746:19749" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CI.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-start-column="24" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bot_function.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>

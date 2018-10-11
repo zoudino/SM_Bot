@@ -49,7 +49,7 @@ tracker = {
 "Variables that will be used in checking information of the SM"
 ip_address = ''
 error_message = 0
-bot_function.get_all_CI()
+CI = ''
 
 
 @app.route('/', methods=['POST'])
@@ -146,6 +146,7 @@ def create_card_response(event_message):
     global tracker
     global ip_address
     global error_message
+    global CI
 
     words = event_message.lower().split()
     # Event message = @"Service Manager bot"  debug
@@ -210,16 +211,57 @@ def create_card_response(event_message):
         elif bot_function.validate_CI(word) == True and tracker['1'] == 1 and tracker['2'] ==1 : # this is right
             widgets.append({
                 'textParagraph':{
-                    'text':'You got it!!'
+                    'text':'Congrats!! I found a match for your CI. <br> Please indicates field on CI you want to update. <br> a. Owner <br> b.Service(s) <br> c.Status <br> d.Compliance category (PC11,PCI2, SOX, and/or SSAE) <br>e.Description'
                 }
             })
+            CI = word
+            tracker['1'] +=1 # 1 ==2
+            tracker['cancel'] +=1 # cancel == 3
         elif bot_function.validate_CI(word) == False and tracker['1'] == 1 and tracker['2'] ==1:
             widgets.append({
                 'textParagraph': {
                     'text': 'Ops, something went wrong with your CI ' + word + 'Please check this CI and re-enter and value'
                 }
             })
+        elif word == 'a' and tracker['1'] == 2 and tracker['2'] == 1: # incomplete
+            widgets.append({
+                'textParagraph': {
+                    'text': 'Please type the email address you want to update '
+                }
+            })
+        elif word == 'b' and tracker['1'] == 2 and tracker['2'] == 1:  # incomplete
+            widgets.append({
+                'textParagraph': {
+                    'text': 'Ops, something went wrong with your CI ' + word + 'Please check this CI and re-enter and value'
+                }
+            })
+        elif word == 'c' and tracker['1'] == 2 and tracker['2'] == 1:  # incomplete let's say user choose c
+            widgets.append({
+                'textParagraph': {
+                    'text': 'Select one to update:<br>a.open</br>b.Discovered<br>c.Received<br>d.In Stock<br>e.Reserved<br>f. In Use<br>g.Maintenance<br>h.Retired/Consumed<br>i.Disposed'
+                }
+            })
+            tracker['1'] += 1 # 1==3
+            tracker['cancel'] +=1 # cancel ==3
+        elif word == 'd' and tracker['1'] == 2 and tracker['2'] == 1:  # incomplete
+            widgets.append({
+                'textParagraph': {
+                    'text': 'Ops, something went wrong with your CI ' + word + 'Please check this CI and re-enter and value'
+                }
+            })
+        elif word == 'e' and tracker['1'] == 2 and tracker['2'] == 1:  # incomplete
+            widgets.append({
+                'textParagraph': {
+                    'text': 'Ops, something went wrong with your CI ' + word + 'Please check this CI and re-enter and value'
+                }
+            })
+        elif word =='a' and tracker['1'] == 3 and tracker['2'] == 1:
+            widgets.append({
+                'textParagraph': {
+                    'text': 'In process to create ticket. Please wait for a moment for a ticket number. <br> ' + bot_function.create_ticket(CI, 'open')
+                }
 
+            })
         elif word == '2' and tracker['2'] == 1:
             widgets.append({
                  'textParagraph': {
@@ -325,7 +367,6 @@ def create_card_response(event_message):
             })
             tracker['2'] += 1 # 2 == 8
             tracker['cancel'] += 1 # cancel == 8
-
         elif word == 'yes'and tracker['2'] == 8 and tracker['cancel'] == 8:
             widgets.append({
                  'textParagraph': {
@@ -450,111 +491,6 @@ def send_cancel_message(num, c_stage):
             tracker['2'] -= 1
             return c_message
 
-
-
-
-
-"""
-   Later will be deleted if we no longer use it. 
-
-        elif word == 'keyvalue':
-            widgets.append({
-                'keyValue': {
-                    'topLabel': 'KeyValue Widget',
-                    'content': 'This is a KeyValue widget',
-                    'bottomLabel': 'The bottom label',
-                    'icon': 'STAR'
-                }
-            })
-        elif word == 'interactivetextbutton':
-            widgets.append({
-                'buttons': [
-                    {
-                        'textButton': {
-                            'text': 'INTERACTIVE BUTTON',
-                            'onClick': {
-                                'action': {
-                                    'actionMethodName': INTERACTIVE_TEXT_BUTTON_ACTION,
-                                    'parameters': [{
-                                        'key': INTERACTIVE_BUTTON_PARAMETER_KEY,
-                                        'value': event_message
-                                    }]
-                                }
-                            }
-                        }
-                    }
-                ]
-            })
-        elif word == 'interactiveimagebutton':
-            widgets.append({
-                'buttons': [
-                    {
-                        'imageButton': {
-                            'icon': 'EVENT_SEAT',
-                            'onClick': {
-                                'action': {
-                                    'actionMethodName': INTERACTIVE_IMAGE_BUTTON_ACTION,
-                                    'parameters': [{
-                                        'key': INTERACTIVE_BUTTON_PARAMETER_KEY,
-                                        'value': event_message
-                                    }]
-                                }
-                            }
-                        }
-                    }
-                ]
-            })
-        elif word == 'textbutton':
-            widgets.append({
-                'buttons': [
-                    {
-                        'textButton': {
-                            'text': 'TEXT BUTTON',
-                            'onClick': {
-                                'openLink': {
-                                    'url': 'https://developers.google.com',
-                                }
-                            }
-                        }
-                    }
-                ]
-            })
-        elif word == 'imagebutton':
-            widgets.append({
-                'buttons': [
-                    {
-                        'imageButton': {
-                            'icon': 'EVENT_SEAT',
-                            'onClick': {
-                                'openLink': {
-                                    'url': 'https://developers.google.com',
-                                }
-                            }
-                        }
-                    }
-                ]
-            })
-        elif word == 'image':
-            widgets.append({
-                'image': {
-                    'imageUrl': 'https://goo.gl/Bpa3Y5',
-                    'onClick': {
-                        'openLink': {
-                            'url': 'https://developers.google.com'
-                        }
-                    }
-                }
-            })
-
- elif validate_email_address(word) == False and tracker['2'] == 7 and tracker['cancel'] == 7:
-            widgets.append({
-                'textParagraph': {
-                    'text': 'Sorry, the format of your email address is wrong. Please enter the right email address. Or type "finish" to end the conversation'
-                }
-            })
-
-
-"""
 
 
 

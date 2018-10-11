@@ -29,6 +29,43 @@ def get_all_CI():
     with open('./CI.json','w') as outfile:
         json.dump(data, outfile)
 
+def create_ticket(CI_value, change_request):
+    CI_value = CI_value.upper()
+    # now, we need to create a ticket
+    url_request = 'http://157.56.181.15:13080/SM/9/rest/requests'
+    # Define the Json data to create a ticket
+    request_data = {
+        "Request": {
+        "AffectedCI": "" + CI_value,
+        "AffectedService":"CI1013981",
+        "AssignedGroup": "Asset Management",
+        "BriefDescription": "Test!! Please ignore. Asset Update Request - "+ CI_value + " " + change_request,
+        "Subcategory": "Universal",
+        "Description": [
+            "This is for test purpose. Please ignore it. Thanks for your understanding. "
+        ],
+        "Impact": "4",
+        "Model": "Universal",
+        "ModelName": "Universal",
+        "Priority": "4",
+        "Reason": "4",
+        "Source":"5 - Chat",
+        "RequestorName": "Dino Zou",
+        "Status": ""+ change_request,
+        "Urgency": "3"
+        }
+    }
+    # We post the value in here. If we got success, the system will return a json
+    resp = requests.post(url = url_request, auth=HTTPBasicAuth('chatbot', 'CHATBOT'),json= request_data)
+    if resp.status_code == 200:
+          # extract the ticket number and return to the user
+          ticket = resp.json()
+          ticket = ticket['Request']['Number']
+          result = "Congrats!! We created a ticket for you. Write it down on your paper" + ticket
+          return result
+    else:
+        return resp.status_code
+        # if we get success, we should return a ticket number to the user
 
 def check_IP_address(ip):
     """

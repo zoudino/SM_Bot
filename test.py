@@ -2,7 +2,6 @@
 
 import bot_function
 
-TEST = 'CI1007780'
-value = bot_function.validate_CI(TEST)
-
+TEST = 'CI1013981'
+value = bot_function.create_ticket(TEST,'Open')
 print(value)
