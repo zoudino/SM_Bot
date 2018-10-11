@@ -34,6 +34,7 @@ INTERACTIVE_TEXT_BUTTON_ACTION = "doTextButtonAction"
 INTERACTIVE_IMAGE_BUTTON_ACTION = "doImageButtonAction"
 INTERACTIVE_BUTTON_PARAMETER_KEY = "param_key"
 BOT_HEADER = 'Card Bot Python'
+
 """This is coodinate to track the progress of the conversation. So, the conversation can be very unique. """
 tracker = {
         "start":0,
@@ -206,13 +207,13 @@ def create_card_response(event_message):
             })
             tracker['1'] += 1  # 1 == 1
             tracker['cancel'] += 1  # cancel == 2
-        elif bot_function.validate_CI(word) == True and tracker['1'] == 1 and tracker['2'] ==1 :
+        elif bot_function.validate_CI(word) == True and tracker['1'] == 1 and tracker['2'] ==1 : # this is right
             widgets.append({
                 'textParagraph':{
                     'text':'You got it!!'
                 }
             })
-        elif bot_function.validate_CI(word) == True and tracker['1'] == 1 and tracker['2'] ==1:
+        elif bot_function.validate_CI(word) == False and tracker['1'] == 1 and tracker['2'] ==1:
             widgets.append({
                 'textParagraph': {
                     'text': 'Sorry to let you cry:('
