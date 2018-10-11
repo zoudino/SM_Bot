@@ -24,6 +24,10 @@ from oauth2client.service_account import ServiceAccountCredentials
 import socket
 # import a module
 import bot_function
+# setting the default deadline to solve the server not response issue
+from google.appengine.api import urlfetch
+urlfetch.set_default_fetch_deadline(60)
+
 
 app = Flask(__name__)
 INTERACTIVE_TEXT_BUTTON_ACTION = "doTextButtonAction"
