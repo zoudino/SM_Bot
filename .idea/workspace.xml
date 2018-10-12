@@ -22,13 +22,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="185" />
-          <entry key="py" value="24741" />
+          <entry key="py" value="24925" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="185" />
-          <entry key="Python" value="24741" />
+          <entry key="Python" value="24925" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -55,11 +55,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="135" column="22" lean-forward="true" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
+            <state relative-caret-position="365">
+              <caret line="130" column="49" selection-start-line="130" selection-start-column="49" selection-end-line="130" selection-end-column="49" />
               <folding>
                 <element signature="e#5106#5506#0" />
-                <element signature="e#5979#6223#0" />
+                <element signature="e#4663#4814#0" />
                 <element signature="e#6033#6276#0" />
                 <element signature="e#6657#6868#0" />
                 <element signature="e#6944#7378#0" />
@@ -301,11 +301,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="135" column="22" lean-forward="true" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
+        <state relative-caret-position="365">
+          <caret line="130" column="49" selection-start-line="130" selection-start-column="49" selection-end-line="130" selection-end-column="49" />
           <folding>
             <element signature="e#5106#5506#0" />
-            <element signature="e#5979#6223#0" />
+            <element signature="e#4663#4814#0" />
             <element signature="e#6033#6276#0" />
             <element signature="e#6657#6868#0" />
             <element signature="e#6944#7378#0" />

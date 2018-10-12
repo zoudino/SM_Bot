@@ -26,7 +26,7 @@ tracker = {"start":0, "1":0,"2":0,"3":0,"yes":0, "no":0,"cancel":0}
 ip_address = ''
 error_message = 0
 CI = ''
-
+username =''
 
 @app.route('/', methods=['POST'])
 def home_post():
@@ -36,6 +36,8 @@ def home_post():
     """
     event_data = request.get_json()
     resp = None
+    username = event_data["message"]["sender"]["displayName"]
+
     # If the bot is removed from the space, it doesn't post a message
     # to the space. Instead, log a message showing that the bot was removed.
     if event_data['type'] == 'REMOVED_FROM_SPACE':
@@ -102,18 +104,14 @@ def create_card_response(event_message):
     widgets = list()
     header = None
 
-    global tracker
-    global ip_address
-    global error_message
-    global CI
+    global tracker, ip_address, error_message, CI, username
 
     words = event_message.lower().split()
     # Event message = @"Service Manager bot"  debug
     words = words[3:]
 
     # let's add some conversation into the bot. So, we can add some flexability into our chat.
-    GREETING_KEYWORDS = ("hello", "hi","hey","what's up", )
-    GREETING_RESPONSES = ["Hi there. My name is ???. Happy to help you improving your experience with Service Manager. Please type 'start' to see what I can do."]
+    GREETING_KEYWORDS = ("hello", "hi","hey","what's up")
     for word in words:
         if word == 'header':
             header = {
@@ -130,7 +128,7 @@ def create_card_response(event_message):
             })
             widgets.append({
                 'textParagraph': {
-                    'text': 'Hi there. I am your service manager bot! Happy to help you improving your experience with Service Manager. Please type "start" to see what I can do.'
+                    'text': 'Hi ' + username + '. I am your service manager bot! Happy to help you improving your experience with Service Manager. Please type "start" to see what I can do.'
                 }
             })
         elif word == 'friday' and tracker['start'] == 0:
