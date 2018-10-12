@@ -129,7 +129,7 @@ def create_card_response(event_message):
             })
             widgets.append({
                 'textParagraph': {
-                    'text': 'Hi ' + username + '. I am your service manager bot! Happy to help you improving your experience with Service Manager. Please type "start" to see what I can do.'
+                    'text': 'Hi <' + username + '>! I am your service manager bot! Happy to help you improving your experience with Service Manager. Please type "start" to see what I can do.'
                 }
             })
         elif word == 'friday' and tracker['start'] == 0:
