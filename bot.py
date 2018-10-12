@@ -37,8 +37,7 @@ def home_post():
     event_data = request.get_json()
     resp = None
     global username
-    username = event_data["message"]["sender"]["name"]
-
+    username = event_data["message"]["sender"]["email"]
     # If the bot is removed from the space, it doesn't post a message
     # to the space. Instead, log a message showing that the bot was removed.
     if event_data['type'] == 'REMOVED_FROM_SPACE':
@@ -129,7 +128,7 @@ def create_card_response(event_message):
             })
             widgets.append({
                 'textParagraph': {
-                    'text': 'Hi <' + username + '>! I am your service manager bot! Happy to help you improving your experience with Service Manager. Please type "start" to see what I can do.'
+                    'text': 'Hi ' + username + '! I am your service manager bot! Happy to help you improving your experience with Service Manager. Please type "start" to see what I can do.'
                 }
             })
         elif word == 'friday' and tracker['start'] == 0:
