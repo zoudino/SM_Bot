@@ -1,17 +1,3 @@
-# Copyright 2017 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 import logging
 import random
 import requests
@@ -28,24 +14,14 @@ import bot_function
 from google.appengine.api import urlfetch
 urlfetch.set_default_fetch_deadline(60)
 
-
 app = Flask(__name__)
 INTERACTIVE_TEXT_BUTTON_ACTION = "doTextButtonAction"
 INTERACTIVE_IMAGE_BUTTON_ACTION = "doImageButtonAction"
 INTERACTIVE_BUTTON_PARAMETER_KEY = "param_key"
 BOT_HEADER = 'Card Bot Python'
 
-"""This is coodinate to track the progress of the conversation. So, the conversation can be very unique. """
-tracker = {
-        "start":0,
-            "1":0,
-            "2":0,
-            "3":0,
-          "yes":0,
-           "no":0,
-       "cancel":0
-    }
-
+"""This is coodinate to track the progress of the conversation. So, we can locate the u """
+tracker = {"start":0, "1":0,"2":0,"3":0,"yes":0, "no":0,"cancel":0}
 "Variables that will be used in checking information of the SM"
 ip_address = ''
 error_message = 0
@@ -76,11 +52,6 @@ def home_post():
 
     elif event_data['type'] == 'MESSAGE':
         resp = create_card_response(event_data['message']['text']) # changed
-  
-    elif event_data['type'] == 'CARD_CLICKED':
-        action_name = event_data['action']['actionMethodName']
-        parameters = event_data['action']['parameters']
-        resp = respond_to_interactive_card_click(action_name, parameters)
 
     space_name = event_data['space']['name']
 
@@ -100,11 +71,6 @@ def home_post():
 
 @app.route('/', methods=['GET'])
 def home_get():
-    """Respond to GET requests to this endpoint.
-    This function responds to requests with a simple HTML landing page for this
-    App Engine instance.
-    """
-    
     return render_template('home.html')
     
 def send_async_response(response, space_name, thread_id):
@@ -119,7 +85,6 @@ def send_async_response(response, space_name, thread_id):
     if thread_id != None:
         response['thread'] = thread_id
     ##################################
-
     scopes = ['https://www.googleapis.com/auth/chat.bot']
     credentials = ServiceAccountCredentials.from_json_keyfile_name('service-acct.json', scopes)
     http_auth = credentials.authorize(Http())
@@ -131,12 +96,6 @@ def send_async_response(response, space_name, thread_id):
 
 
 def create_card_response(event_message):
-    """Creates a card response based on the message sent in Hangouts Chat.
-    See the reference for JSON keys and format for cards:
-    https://developers.google.com/hangouts/chat/reference/message-formats/cards
-    Args:
-        eventMessage: the user's message to the bot
-    """
 
     response = dict()  
     cards = list()
@@ -167,6 +126,10 @@ def create_card_response(event_message):
             }
         elif word in GREETING_KEYWORDS and tracker['start'] == 0:
             widgets.append({
+                'image':{
+                    'imageUrl':'https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif'
+
+                },
                 'textParagraph': {
                     'text': random.choice(GREETING_RESPONSES)
                 }
@@ -178,7 +141,6 @@ def create_card_response(event_message):
                 }
              })
             tracker['start'] += 1 # start == 1
-
         elif word == 'start' and tracker['start'] == 1:
             tracker = {key:0 for key in tracker}
             widgets.append({
