@@ -126,12 +126,13 @@ def create_card_response(event_message):
             }
         elif word in GREETING_KEYWORDS and tracker['start'] == 0:
             widgets.append({
-                'image':{
-                    'imageUrl':'https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif'
-
-                },
+                {
+                    'image':{'imageUrl':'https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif'}
+                }
+            })
+            widgets.append({
                 'textParagraph': {
-                    'text': random.choice(GREETING_RESPONSES)
+                    'text': 'Hi there. I am your service manager bot! Happy to help you improving your experience with Service Manager. Please type "start" to see what I can do.'
                 }
             })
         elif word =='start' and tracker['start'] == 0:
