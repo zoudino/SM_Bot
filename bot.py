@@ -36,7 +36,7 @@ def home_post():
     """
     event_data = request.get_json()
     resp = None
-    username = event_data["message"]["sender"]["displayName"]
+    username = event_data["message"]["sender"]["name"]
 
     # If the bot is removed from the space, it doesn't post a message
     # to the space. Instead, log a message showing that the bot was removed.
