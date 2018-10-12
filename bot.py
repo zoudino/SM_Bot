@@ -133,6 +133,15 @@ def create_card_response(event_message):
                     'text': 'Hi there. I am your service manager bot! Happy to help you improving your experience with Service Manager. Please type "start" to see what I can do.'
                 }
             })
+        elif word == 'happy friday' and tracker['start'] == 0:
+            widgets.append({
+                    'image':{'imageUrl':'https://media.giphy.com/media/l2Sqf1Y2g9C3F97kA/giphy.gif'}
+            })
+            widgets.append({
+                'textParagraph': {
+                    'text': 'Happy Friday:)'
+                }
+            })
         elif word =='start' and tracker['start'] == 0:
             widgets.append({
                 'textParagraph' : {
