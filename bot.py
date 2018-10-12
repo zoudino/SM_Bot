@@ -126,9 +126,7 @@ def create_card_response(event_message):
             }
         elif word in GREETING_KEYWORDS and tracker['start'] == 0:
             widgets.append({
-                {
                     'image':{'imageUrl':'https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif'}
-                }
             })
             widgets.append({
                 'textParagraph': {
