@@ -37,9 +37,11 @@ def home_post():
     event_data = request.get_json()
     resp = None
     global username
+    # Extracting the username for 'hi'
     username = event_data["message"]["sender"]["email"]
     location = username.index('@globalpay.com')
     username = username[:location]
+
     # If the bot is removed from the space, it doesn't post a message
     # to the space. Instead, log a message showing that the bot was removed.
     if event_data['type'] == 'REMOVED_FROM_SPACE':
@@ -229,7 +231,7 @@ def create_card_response(event_message):
         elif word =='a' and tracker['1'] == 3 and tracker['2'] == 1:
             widgets.append({
                 'textParagraph': {
-                    'text': 'In process to create ticket. Please wait for a moment for a ticket number. <br> ' + bot_function.create_ticket(CI, 'open')
+                    'text': bot_function.create_ticket(CI, 'open')
                 }
 
             })
