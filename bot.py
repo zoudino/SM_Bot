@@ -160,7 +160,7 @@ def create_card_response(event_message):
             })
             widgets.append({
                 'textParagraph': {
-                    'text': "Amazing choice!! Let's call our old friend superman for help. He should be arrive in a second. "
+                    'text': "Amazing choice!! Let's call our old friend superman for help. He should be arrive in a second........failed. Please type 'start' to restart the whole process"
                 }
             })
         elif word == '2' and tracker['2'] == 0:
