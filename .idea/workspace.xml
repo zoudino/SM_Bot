@@ -22,13 +22,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="185" />
-          <entry key="py" value="25209" />
+          <entry key="py" value="25574" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="185" />
-          <entry key="Python" value="25209" />
+          <entry key="Python" value="25574" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -55,8 +55,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="46" column="19" lean-forward="true" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
+            <state relative-caret-position="689">
+              <caret line="145" column="95" lean-forward="true" selection-start-line="145" selection-start-column="95" selection-end-line="145" selection-end-column="95" />
               <folding>
                 <element signature="e#5106#5506#0" />
                 <element signature="e#6033#6276#0" />
@@ -312,8 +312,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="46" column="19" lean-forward="true" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
+        <state relative-caret-position="689">
+          <caret line="145" column="95" lean-forward="true" selection-start-line="145" selection-start-column="95" selection-end-line="145" selection-end-column="95" />
           <folding>
             <element signature="e#5106#5506#0" />
             <element signature="e#6033#6276#0" />
