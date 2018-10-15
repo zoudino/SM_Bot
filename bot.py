@@ -38,6 +38,8 @@ def home_post():
     resp = None
     global username
     username = event_data["message"]["sender"]["email"]
+    location = username.index('@globalpay.com')
+    username = username[:location]
     # If the bot is removed from the space, it doesn't post a message
     # to the space. Instead, log a message showing that the bot was removed.
     if event_data['type'] == 'REMOVED_FROM_SPACE':
@@ -45,12 +47,10 @@ def home_post():
         return 'OK'
 
     elif event_data['type']  == 'ADDED_TO_SPACE' and event_data['space']['type'] == 'ROOM':
-        resp = { 'text': ('Thanks for adding me to {}!'
-            .format(event_data['space']['name'])) }
+        resp = { 'text': ('Thanks for adding me to {}!'.format(event_data['space']['name'])) }
 
     elif event_data['type']  == 'ADDED_TO_SPACE' and event_data['space']['type'] == 'DM':
-        resp = { 'text': ('Thanks for adding me to a DM, {}!'
-            .format(event_data['user']['displayName'])) }
+        resp = { 'text': ('Thanks for adding me to a DM, {}!'.format(event_data['user']['displayName'])) }
 
     elif event_data['type'] == 'MESSAGE':
         resp = create_card_response(event_data['message']['text']) # changed
@@ -128,7 +128,7 @@ def create_card_response(event_message):
             })
             widgets.append({
                 'textParagraph': {
-                    'text': 'Hi ' + username + '! I am your service manager bot! Happy to help you improving your experience with Service Manager. Please type "start" to see what I can do.'
+                    'text': 'Hi ' + username + '. Happy to help you. Please type "start" to see what I can do.'
                 }
             })
         elif word == 'friday' and tracker['start'] == 0:

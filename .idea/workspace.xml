@@ -22,13 +22,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="185" />
-          <entry key="py" value="24965" />
+          <entry key="py" value="25209" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="185" />
-          <entry key="Python" value="24965" />
+          <entry key="Python" value="25209" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -55,11 +55,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
+            <state relative-caret-position="388">
+              <caret line="46" column="19" lean-forward="true" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
               <folding>
                 <element signature="e#5106#5506#0" />
-                <element signature="e#4663#4814#0" />
                 <element signature="e#6033#6276#0" />
                 <element signature="e#6657#6868#0" />
                 <element signature="e#6944#7378#0" />
@@ -150,6 +149,7 @@
       <find>error message</find>
       <find>CI1013981</find>
       <find>error_message</find>
+      <find>username</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -170,7 +170,7 @@
     <option name="x" value="1299" />
     <option name="y" value="-176" />
     <option name="width" value="1839" />
-    <option name="height" value="732" />
+    <option name="height" value="1031" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -229,7 +229,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1299" y="-176" width="1839" height="732" extended-state="0" />
+    <frame x="1299" y="-176" width="1839" height="1031" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17473567" />
@@ -255,6 +255,17 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bot.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/function.py">
@@ -301,11 +312,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
+        <state relative-caret-position="388">
+          <caret line="46" column="19" lean-forward="true" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
           <folding>
             <element signature="e#5106#5506#0" />
-            <element signature="e#4663#4814#0" />
             <element signature="e#6033#6276#0" />
             <element signature="e#6657#6868#0" />
             <element signature="e#6944#7378#0" />
