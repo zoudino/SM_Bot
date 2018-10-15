@@ -143,7 +143,7 @@ def create_card_response(event_message):
         elif word =='start' and tracker['start'] == 0:
             widgets.append({
                 'textParagraph' : {
-                    'text':' Oh yeah. Love to help:) Please select one: <br> 1. Save the Earth <br>2.Open a ticket to update a CI'
+                    'text':'Oh yeah. Love to help:) Please select one: <br>1. Save the Earth <br>2.Open a ticket to update a CI'
                 }
              })
             tracker['start'] += 1 # start == 1
@@ -156,8 +156,11 @@ def create_card_response(event_message):
             })
         elif word == '1' and tracker['1'] == 0 and tracker['2'] == 0:
             widgets.append({
+                'image': {'imageUrl': 'https://media.giphy.com/media/n07CBTpZzjybm/giphy.gif'}
+            })
+            widgets.append({
                 'textParagraph': {
-                    'text': 'Sorry, this feature is still in progress. Please type "cancel" for returning the previous window'
+                    'text': "Amazing choice!! Let's call our old friend superman for help. He should be arrive in a second. "
                 }
             })
         elif word == '2' and tracker['2'] == 0:
