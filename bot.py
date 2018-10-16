@@ -61,43 +61,12 @@ def home_post():
 
     logging.info(resp)
     return json.jsonify(resp)
-"""
-    # Asynchronous response version:
-    thread_id = None
-    if event_data['message']['thread'] != None:
-        thread_id = event_data['message']['thread']
 
-    # Need to return a response to avoid an error in the Flask app
-    send_async_response(resp, space_name, thread_id)
-    return 'OK'
-"""
 
 @app.route('/', methods=['GET'])
 def home_get():
     return render_template('home.html')
     
-def send_async_response(response, space_name, thread_id):
-    """Sends a response back to the Hangouts Chat room asynchronouslyslls.
-    Args:
-      response: the response payload
-      spaceName: The URL of the Hangouts Chat room
-    """
-
-    # The following two lines of code update the thread that raised the event.
-    # Delete them if you want to send the message in a new thread.
-    if thread_id != None:
-        response['thread'] = thread_id
-    ##################################
-    scopes = ['https://www.googleapis.com/auth/chat.bot']
-    credentials = ServiceAccountCredentials.from_json_keyfile_name('service-acct.json', scopes)
-    http_auth = credentials.authorize(Http())
-    chat = build('chat', 'v1', http=http_auth)
-    chat.spaces().messages().create(
-        parent=space_name,
-        body=response).execute()
-
-
-
 def create_card_response(event_message):
 
     response = dict()  
