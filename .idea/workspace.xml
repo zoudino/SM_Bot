@@ -22,13 +22,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="185" />
-          <entry key="py" value="26365" />
+          <entry key="py" value="26369" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="185" />
-          <entry key="Python" value="26365" />
+          <entry key="Python" value="26369" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -56,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="725">
-              <caret line="166" column="185" selection-start-line="166" selection-start-column="185" selection-end-line="166" selection-end-column="185" />
+              <caret line="166" column="177" selection-start-line="166" selection-start-column="177" selection-end-line="166" selection-end-column="177" />
               <folding>
                 <element signature="e#6944#7378#0" />
                 <element signature="e#7447#7811#0" />
@@ -309,7 +309,7 @@
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="725">
-          <caret line="166" column="185" selection-start-line="166" selection-start-column="185" selection-end-line="166" selection-end-column="185" />
+          <caret line="166" column="177" selection-start-line="166" selection-start-column="177" selection-end-line="166" selection-end-column="177" />
           <folding>
             <element signature="e#6944#7378#0" />
             <element signature="e#7447#7811#0" />
