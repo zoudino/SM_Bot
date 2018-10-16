@@ -38,9 +38,7 @@ def home_post():
     resp = None
     global username
     # Extracting the username for 'hi'
-    username = event_data["message"]["sender"]["email"]
-    location = username.index('@globalpay.com')
-    username = username[:location]
+
 
     # If the bot is removed from the space, it doesn't post a message
     # to the space. Instead, log a message showing that the bot was removed.
@@ -56,12 +54,13 @@ def home_post():
 
     elif event_data['type'] == 'MESSAGE':
         resp = create_card_response(event_data['message']['text'])
+        username = event_data["message"]["sender"]["email"]
+        location = username.index('@globalpay.com')
+        username = username[:location]
 
     space_name = event_data['space']['name']
 
-    logging.info(resp)
-
-
+    #logging.info(resp)
     return json.jsonify(resp)
 """
     # Asynchronous response version:
