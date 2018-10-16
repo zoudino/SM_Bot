@@ -57,10 +57,9 @@ def home_post():
         username = event_data["message"]["sender"]["email"]
         location = username.index('@globalpay.com')
         username = username[:location]
-
     space_name = event_data['space']['name']
 
-    #logging.info(resp)
+    logging.info(resp)
     return json.jsonify(resp)
 """
     # Asynchronous response version:
