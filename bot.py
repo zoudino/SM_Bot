@@ -50,7 +50,7 @@ def home_post():
         resp = { 'text': ('Thanks for adding me to {}!'.format(event_data['space']['name'])) }
 
     elif event_data['type']  == 'ADDED_TO_SPACE' and event_data['space']['type'] == 'DM':
-        resp = { 'text': ('Thanks for adding me to a DM, {}!'.format(event_data['user']['displayName'])) }
+        resp = { 'text': ('Thanks for adding me to a DM, {}! Please type "start" to get started.'.format(event_data['user']['displayName'])) }
 
     elif event_data['type'] == 'MESSAGE':
         resp = create_card_response(event_data['message']['text'])
@@ -66,7 +66,7 @@ def home_post():
 @app.route('/', methods=['GET'])
 def home_get():
     return render_template('home.html')
-    
+
 def create_card_response(event_message):
 
     response = dict()  
@@ -124,7 +124,7 @@ def create_card_response(event_message):
             tracker = {key:0 for key in tracker}
             widgets.append({
                 'textParagraph': {
-                    'text': 'How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
+                    'text': 'Love to help:) How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
                 }
             })
         elif word == '1' and tracker['1'] == 0 and tracker['2'] == 0:
