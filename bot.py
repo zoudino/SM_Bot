@@ -55,15 +55,15 @@ def home_post():
         resp = { 'text': ('Thanks for adding me to a DM, {}!'.format(event_data['user']['displayName'])) }
 
     elif event_data['type'] == 'MESSAGE':
-        resp = create_card_response(event_data['message']['text']) # changed
+        resp = create_card_response(event_data['message']['text'])
 
     space_name = event_data['space']['name']
 
     logging.info(resp)
 
-    # Uncomment the following line for a synchronous response.
-    #return json.jsonify(resp)
 
+    return json.jsonify(resp)
+"""
     # Asynchronous response version:
     thread_id = None
     if event_data['message']['thread'] != None:
@@ -72,6 +72,7 @@ def home_post():
     # Need to return a response to avoid an error in the Flask app
     send_async_response(resp, space_name, thread_id)
     return 'OK'
+"""
 
 @app.route('/', methods=['GET'])
 def home_get():
@@ -145,7 +146,7 @@ def create_card_response(event_message):
         elif word =='start' and tracker['start'] == 0:
             widgets.append({
                 'textParagraph' : {
-                    'text':'Oh yeah. Love to help:) Please select one: <br>1. Save the Earth <br>2.Open a ticket to update a CI'
+                    'text':'Love to help:) Please select one: <br>1. Save the Earth <br>2.Open a ticket to update a CI'
                 }
              })
             tracker['start'] += 1 # start == 1
@@ -162,7 +163,7 @@ def create_card_response(event_message):
             })
             widgets.append({
                 'textParagraph': {
-                    'text': "Amazing choice!! Let's call our old friend superman for help. He should be arrive in a second........failed. Please type 'start' to restart the whole process"
+                    'text': "Amazing choice!! Let's call our old friend <b>superman for help. He should be arrive in a second........failed. He is too busy with fighting batman Please type 'start' to restart the whole process"
                 }
             })
         elif word == '2' and tracker['2'] == 0:
