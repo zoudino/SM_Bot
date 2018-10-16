@@ -109,7 +109,7 @@ def create_card_response(event_message):
 
     words = event_message.lower().split()
     # Event message = @"Service Manager bot"  debug
-    words = words[3:]
+    # words = words[3:]
 
     # let's add some conversation into the bot. So, we can add some flexability into our chat.
     GREETING_KEYWORDS = ("hello", "hi","hey","what's up")
