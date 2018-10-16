@@ -408,7 +408,7 @@ def create_card_response(event_message):
                     'imageUrl': 'https://goo.gl/aeDtrS',
                     'imageStyle': 'IMAGE'
                   },
-                    'sections': [{'widgets': widgets }]})
+                    'sections': [{'widgets': ''+event_message }]})
     response['cards'] = cards
 
     return response

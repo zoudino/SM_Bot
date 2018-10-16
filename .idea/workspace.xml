@@ -22,13 +22,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="185" />
-          <entry key="py" value="26147" />
+          <entry key="py" value="26162" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="185" />
-          <entry key="Python" value="26147" />
+          <entry key="Python" value="26162" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -55,10 +55,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="58" column="38" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
+            <state relative-caret-position="456">
+              <caret line="410" column="66" selection-start-line="410" selection-start-column="66" selection-end-line="410" selection-end-column="66" />
               <folding>
-                <element signature="e#5106#5506#0" />
                 <element signature="e#6944#7378#0" />
                 <element signature="e#7447#7811#0" />
                 <element signature="e#10021#10458#0" />
@@ -309,10 +308,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="58" column="38" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
+        <state relative-caret-position="456">
+          <caret line="410" column="66" selection-start-line="410" selection-start-column="66" selection-end-line="410" selection-end-column="66" />
           <folding>
-            <element signature="e#5106#5506#0" />
             <element signature="e#6944#7378#0" />
             <element signature="e#7447#7811#0" />
             <element signature="e#10021#10458#0" />
