@@ -408,7 +408,7 @@ def create_card_response(event_message):
                     'imageUrl': 'https://goo.gl/aeDtrS',
                     'imageStyle': 'IMAGE'
                   },
-                    'sections': [{'widgets': words }]}) # u'@"Service Manager bot" hi'
+                    'sections': [{'widgets': widgets }]}) # u'@"Service Manager bot" hi'
     response['cards'] = cards
 
     return response
