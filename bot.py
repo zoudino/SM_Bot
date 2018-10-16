@@ -107,9 +107,12 @@ def create_card_response(event_message):
 
     global tracker, ip_address, error_message, CI, username
 
-    words = event_message.lower().split()
-    # Event message = @"Service Manager bot"  debug
-    # words = words[3:]
+
+    if event_message[:22] == '@"Service Manager bot"':
+        words = event_message.lower().split()
+        words = words[3:]
+    else:
+        words = event_message.lower().split()
 
     # let's add some conversation into the bot. So, we can add some flexability into our chat.
     GREETING_KEYWORDS = ("hello", "hi","hey","what's up")
