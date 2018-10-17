@@ -147,7 +147,7 @@ def create_card_response(event_message):
         elif word == '1' and tracker['2'] == 1 and tracker['1'] == 0 and tracker['cancel'] == 1:
             widgets.append({
                 'textParagraph': {
-                    'text': ' You have selected option 1. Unique configuration item identifier.  To cancel and make a new selection, type CANCEL. Otherwise, please enter the CI identifier.'
+                    'text': ' Please enter the CI identifier.'
                 }
             })
             tracker['1'] += 1  # 1 == 1
