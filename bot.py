@@ -139,7 +139,7 @@ def create_card_response(event_message):
         elif word == '2' and tracker['2'] == 0:
             widgets.append({
                  'textParagraph' : {
-                    'text':'You have selected option2, open a ticket to update a configuration item. Please indicate the CI you want update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname<br>Cancel<br>Please select one of these options'
+                    'text':'Please indicate the CI you want update <br>1.Unique configuration item identifier<br>2.IP address<br>3.Hostname'
                 }
             })
             tracker['2'] += 1 #2== 1
