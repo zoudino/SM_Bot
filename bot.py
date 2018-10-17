@@ -374,13 +374,7 @@ def create_card_response(event_message):
     if header != None:
         cards.append(header)
 
-    cards.append({  'header': {
-                    'title': 'Service Manager Support',
-                    'subtitle': 'Connecting with SM faster than ever',
-                    'imageUrl': 'https://goo.gl/aeDtrS',
-                    'imageStyle': 'IMAGE'
-                  },
-                    'sections': [{'widgets': widgets }]}) # u'@"Service Manager bot" hi'
+    cards.append({'sections': [{'widgets': widgets }]}) # u'@"Service Manager bot" hi'
     response['cards'] = cards
 
     return response
@@ -437,7 +431,15 @@ def send_cancel_message(num, c_stage):
 
 
 
+"""
+ 'header': {
+                    'title': 'Service Manager Support',
+                    'subtitle': 'Connecting with SM faster than ever',
+                    'imageUrl': 'https://goo.gl/aeDtrS',
+                    'imageStyle': 'IMAGE'
+                  },
 
+"""
 
 
 
