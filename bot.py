@@ -155,7 +155,7 @@ def create_card_response(event_message):
         elif bot_function.validate_CI(word) == True and tracker['1'] == 1 and tracker['2'] ==1 : # this is right
             widgets.append({
                 'textParagraph':{
-                    'text':'Congrats!! I found a match for your CI. <br> Please indicates field on CI you want to update. <br> a. Owner <br> b.Service(s) <br> c.Status <br> d.Compliance category (PC11,PCI2, SOX, and/or SSAE) <br>e.Description'
+                    'text':'Congrats!! I found a match. <br> Select one:<br> a. Owner <br> b.Service(s) <br> c.Status <br> d.Compliance category (PC11,PCI2, SOX, and/or SSAE) <br> e.Description'
                 }
             })
             CI = word

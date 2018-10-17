@@ -60,7 +60,7 @@ def create_ticket(CI_value, change_request):
           # extract the ticket number and return to the user
           ticket = resp.json()
           ticket = ticket['Request']['Number']
-          result = "Congrats!! We created a ticket for you. Write it down on your paper " + ticket
+          result = "Congrats!! We created a ticket for you. The ticket number is: " + ticket
           return result
     else:
         return resp.status_code
