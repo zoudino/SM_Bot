@@ -81,8 +81,9 @@ def create_card_response(event_message):
         words = event_message.lower().split()
         words = words[3:]
     else:
-        words = event_message.lower().split()
+        words = event_message.lower().split()# in here, we need to make sure if the user is passing a sentence. If they pass a sentence, everything should be ready.
 
+            
     # let's add some conversation into the bot. So, we can add some flexability into our chat.
     GREETING_KEYWORDS = ("hello", "hi","hey","what's up")
     for word in words:
@@ -164,19 +165,19 @@ def create_card_response(event_message):
         elif bot_function.validate_CI(word) == False and tracker['1'] == 1 and tracker['2'] ==1:
             widgets.append({
                 'textParagraph': {
-                    'text': 'Sorry, I did not find a match with your CI <br>Please enter an valid CI' 
+                    'text': 'Sorry, I did not find a match with your CI <br>Please enter an valid CI'
                 }
             })
         elif word == 'a' and tracker['1'] == 2 and tracker['2'] == 1: # incomplete
             widgets.append({
                 'textParagraph': {
-                    'text': 'Please type the email address you want to update '
+                    'text': 'Sorry, this feature is not ready yet!'
                 }
             })
         elif word == 'b' and tracker['1'] == 2 and tracker['2'] == 1:  # incomplete
             widgets.append({
                 'textParagraph': {
-                    'text': 'Ops, something went wrong with your CI ' + word + '<br>Please correct your CI and enter your CI again'
+                    'text': 'Sorry, this feature is not ready yet!'
                 }
             })
         elif word == 'c' and tracker['1'] == 2 and tracker['2'] == 1:  # incomplete let's say user choose c
@@ -190,13 +191,13 @@ def create_card_response(event_message):
         elif word == 'd' and tracker['1'] == 2 and tracker['2'] == 1:  # incomplete
             widgets.append({
                 'textParagraph': {
-                    'text': 'Ops, something went wrong with your CI ' + word + 'Please check this CI and re-enter and value'
+                    'text': 'Sorry, this feature is not ready yet!'
                 }
             })
         elif word == 'e' and tracker['1'] == 2 and tracker['2'] == 1:  # incomplete
             widgets.append({
                 'textParagraph': {
-                    'text': 'Ops, something went wrong with your CI ' + word + 'Please check this CI and re-enter and value'
+                    'text': 'Please make a brief description'
                 }
             })
         elif word =='a' and tracker['1'] == 3 and tracker['2'] == 1:
@@ -204,7 +205,12 @@ def create_card_response(event_message):
                 'textParagraph': {
                     'text': bot_function.create_ticket(CI, 'open')
                 }
-
+            })
+        elif word == 'e' and tracker['1'] == 3 and tracker['2'] == 1:
+            widgets.append({
+                'textParagraph': {
+                    'text': bot_function.create_ticket(CI, 'open')
+                }
             })
         elif word == '2' and tracker['2'] == 1:
             widgets.append({
