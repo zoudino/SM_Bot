@@ -164,7 +164,7 @@ def create_card_response(event_message):
         elif bot_function.validate_CI(word) == False and tracker['1'] == 1 and tracker['2'] ==1:
             widgets.append({
                 'textParagraph': {
-                    'text': 'Sorry, I did not find a match with your CI' + word + 'Please check this CI and re-enter and value'
+                    'text': 'Sorry, I did not find a match with your CI <br>Please enter an valid CI' 
                 }
             })
         elif word == 'a' and tracker['1'] == 2 and tracker['2'] == 1: # incomplete
