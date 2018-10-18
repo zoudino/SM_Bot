@@ -124,7 +124,7 @@ def create_card_response(event_message):
             tracker = {key:0 for key in tracker}
             widgets.append({
                 'textParagraph': {
-                    'text': 'Love to help:) How can I help you today? <br>1.Open a ticket<br>2.Open a ticket to update a CI'
+                    'text': 'Love to help:) How can I help you today? <br>1.Save the Earth<br>2.Open a ticket to update a CI'
                 }
             })
         elif word == '1' and tracker['1'] == 0 and tracker['2'] == 0:
