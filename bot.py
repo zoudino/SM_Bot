@@ -156,7 +156,7 @@ def create_card_response(event_message):
         elif bot_function.validate_CI(word) == True and tracker['1'] == 1 and tracker['2'] ==1 : # this is right
             widgets.append({
                 'textParagraph':{
-                    'text':'Congrats!! I found a match. <br> Select the field you want us to update:<br> a. Owner <br> b. Service(s) <br> c. Status <br> d. Compliance category (PC11,PCI2, SOX, and/or SSAE) <br> e. Description'
+                    'text':'Congrats!! I found a match. <br> Select the field you want us to update:<br> a. Owner <br> b. Service(s) <br> c. Status <br> d. Compliance category (PCI1,PCI2, SOX, and/or SSAE) <br> e. Description'
                 }
             })
             CI = word
@@ -232,7 +232,7 @@ def create_card_response(event_message):
             ip_address = word
             widgets.append({
                  'textParagraph': {
-                    'text':' You have entered ' + ip_address + '<br>Is this the IP address you want to lookup? Plese incidate yes or no'
+                    'text':' You have entered ' + ip_address + '<br>Is this the IP address you want to lookup? Please indicate yes or no.'
                 }
             })
             tracker['2'] += 1
@@ -241,13 +241,13 @@ def create_card_response(event_message):
             ip_address = word
             widgets.append({
                 'textParagraph': {
-                    'text': ' You have entered a wrong IP address. Please re-enter the IP address you want to lookup. Or type "finish" to end the conversation'
+                    'text': ' No match was returned for the IP address you entered. Please recheck the IP address you want to lookup and enter a different value. Or type "finish" to end the conversation'
                 }
             })
         elif word == 'yes' and tracker['2'] == 3 and tracker['cancel'] == 3 and check_IP_address(ip_address) == True:
             widgets.append({
                  'textParagraph': {
-                    'text':'You IP address matched with the following configuration item <br>CID01234567890<br>G1nwwhatever991<br>127.0.0.1<br> Is this the configuration Item you want to update? Please type yes or no'
+                    'text':'Your IP address matched with the following configuration item <br>CID01234567890<br>G1nwwhatever991<br>127.0.0.1<br> Is this the configuration Item you want to update? Please type yes or no'
                 }
             })
             tracker['2'] += 1
@@ -264,7 +264,7 @@ def create_card_response(event_message):
         elif word == 'yes' and tracker['2'] == 3 and tracker['cancel'] == 3 and check_IP_address(ip_address) == False:
             widgets.append({
                 'textParagraph': {
-                    'text': 'Sorry, I did not find any matches for IP address in the system. Please type the IP address again or type "finish" to quit the conversation.'
+                    'text': 'Sorry, I did not find any matches for that IP address in the system. Please type the IP address again or type "finish" to quit the conversation.'
                 }
             })
             tracker['2'] -=1
@@ -304,7 +304,7 @@ def create_card_response(event_message):
         elif word == 'no' and tracker['2'] == 6 and tracker['cancel'] == 6:
             widgets.append({
                 'textParagraph': {
-                    'text': 'What data do you want to update for this CI? Please select one of the following options:<br>a.Owner<br>b.Service(s)<br>c.Status<br>d.Compliance category(PCI1,PCI2,SOX,and/or SSAE)<br>e.Description'
+                    'text': 'What data do you want to update for this CI? Please select one of the following options:<br>a. Owner<br>b. Service(s)<br>c. Status<br>d. Compliance category(PCI1,PCI2,SOX,and/or SSAE)<br>e. Description'
                 }
             })
             tracker['2'] -= 2
@@ -320,7 +320,7 @@ def create_card_response(event_message):
         elif word == 'yes'and tracker['2'] == 8 and tracker['cancel'] == 8:
             widgets.append({
                  'textParagraph': {
-                    'text':'Please stand by while I open you ticket. <br> Your ticket number is RF9876543. Type "finish" to end the conversation'
+                    'text':'Please stand by while I open your ticket. <br> Your ticket number is RF00001. Type "finish" to end the conversation'
                 }
             })
             tracker['yes'] += 1
