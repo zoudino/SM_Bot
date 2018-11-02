@@ -55,7 +55,7 @@ def create_ticket(CI_value, change_request):
         }
     }
     # We post the value in here. If we got success, the system will return a json
-    resp = requests.post(url = url_request, auth=HTTPBasicAuth('chatbot', 'CHATBOT'),json= request_data)
+    resp = requests.post(url = url_request, auth=HTTPBasicAuth('username', 'password'),json= request_data)
     if resp.status_code == 200:
           # extract the ticket number and return to the user
           ticket = resp.json()
@@ -70,7 +70,7 @@ def check_IP_address(ip):
     """
        Building the connection wit service manager
        url = 'http://157.56.181.15:13080/SM/9/rest#Computer'
-       data = requests.get(url,auth = HTTPBasicAuth('chatbot','CHATBOT')).json()
+       data = requests.get(url,auth = HTTPBasicAuth('username','password')).json()
     """
     fake_data = ['127.0.0.1']
     if ip == fake_data[0]:
