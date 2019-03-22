@@ -31,7 +31,7 @@ def get_all_CI():
 def create_ticket(CI_value, change_request):
     CI_value = CI_value.upper()
     # now, we need to create a ticket
-    url_request = 'http://157.56.181.15:13080/SM/9/rest/requests'
+    url_request = 'http:/SM/9/rest/requests'
     # Define the Json data to create a ticket
     request_data = {
         "Request": {
@@ -69,7 +69,7 @@ def create_ticket(CI_value, change_request):
 def check_IP_address(ip):
     """
        Building the connection wit service manager
-       url = 'http://157.56.181.15:13080/SM/9/rest#Computer'
+       url = 'http/SM/9/rest#Computer'
        data = requests.get(url,auth = HTTPBasicAuth('username','password')).json()
     """
     fake_data = ['127.0.0.1']
