@@ -22,7 +22,7 @@ def validate_CI(ci):
 #
 def get_all_CI():
     url = 'http://157.56.181.15:13080/SM/9/rest/computers'
-    data = requests.get(url, auth=HTTPBasicAuth('chatbot', 'CHATBOT')).json()
+    data = requests.get(url, auth=HTTPBasicAuth('', '')).json()
     result = 'success'
     with open('./CI.json','w') as outfile:
         json.dump(data, outfile)
